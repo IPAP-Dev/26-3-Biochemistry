@@ -1,0 +1,1263 @@
+<!doctype html>
+<!-- IPAP Base Adaptive Program: Biochemistry Block 2; separate exam, 2026-09-29. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IPAP — Carb Metabolism & Cell Signaling</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg:#f6f7f9; --card:#ffffff; --text:#16181d; --muted:#667085; --border:#d9dde5;
+  --accent:#2f6fed; --good:#18794e; --bad:#b42318; --warn:#b54708; --soft:#eef3ff;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#111318; --card:#1b1e25; --text:#f4f5f7; --muted:#a7adba; --border:#343945; --soft:#202b45; }
+}
+* { box-sizing:border-box; }
+body { margin:0; font-family:Arial,Helvetica,sans-serif; background:var(--bg); color:var(--text); }
+main { max-width:980px; margin:auto; padding:22px; }
+.panel { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px; margin-bottom:16px; }
+h1 { margin:0 0 6px; font-size:28px; }
+h2 { margin:0 0 12px; font-size:20px; }
+h3 { margin:14px 0 8px; font-size:17px; }
+.small { color:var(--muted); font-size:14px; line-height:1.4; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(175px,1fr)); gap:12px; }
+label { display:block; font-weight:700; font-size:14px; }
+select, button, input[type=file], textarea { width:100%; min-height:44px; margin-top:6px; border-radius:9px; border:1px solid var(--border); font-size:16px; }
+select, input[type=file], textarea { background:var(--card); color:var(--text); padding:8px 10px; }
+button { cursor:pointer; background:var(--accent); color:white; font-weight:700; padding:9px 12px; }
+button.secondary { background:transparent; color:var(--text); }
+button.danger { background:transparent; color:var(--bad); border-color:var(--bad); }
+button:disabled { opacity:.55; cursor:not-allowed; }
+.topline { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center; }
+.progress { height:10px; background:var(--border); border-radius:99px; overflow:hidden; margin:12px 0 18px; }
+.progress > div { height:100%; background:var(--accent); width:0; }
+.qtext { font-size:21px; line-height:1.35; font-weight:700; margin:12px 0 16px; }
+.answers { display:grid; gap:10px; }
+.answer { text-align:left; background:transparent; color:var(--text); border:1px solid var(--border); font-weight:500; }
+.answer:hover { border-color:var(--accent); }
+.answer.correct { border-color:var(--good); }
+.answer.wrong { border-color:var(--bad); }
+.feedback { margin-top:14px; padding:12px; border-radius:10px; border:1px solid var(--border); line-height:1.45; }
+.feedback.good { border-color:var(--good); }
+.feedback.bad { border-color:var(--bad); }
+.mastery { margin-top:8px; font-weight:700; }
+.mastery.need { color:var(--warn); }
+.mastery.done { color:var(--good); }
+.actions { display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; }
+.actions button { width:auto; min-width:135px; }
+.statgrid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:12px; }
+.stat { border:1px solid var(--border); border-radius:10px; padding:12px; text-align:center; }
+.stat b { display:block; font-size:24px; }
+.missed { margin-top:14px; }
+.missed article, .bank-item { border-top:1px solid var(--border); padding:12px 0; }
+.hide { display:none !important; }
+.pill { display:inline-block; border:1px solid var(--border); border-radius:999px; padding:3px 8px; font-size:12px; color:var(--muted); margin:2px 4px 2px 0; }
+.bank-remove { width:auto; min-height:34px; margin-top:8px; padding:6px 10px; font-size:13px; background:transparent; color:var(--bad); border-color:var(--bad); }
+details { margin-top:14px; }
+summary { cursor:pointer; font-weight:700; }
+.notice { border-left:4px solid var(--accent); padding:10px 12px; background:var(--soft); border-radius:8px; }
+.storage { margin-top:8px; }
+@media (max-width:620px) {
+  main { padding:12px; }
+  .statgrid { grid-template-columns:repeat(2,1fr); }
+  .actions button { width:100%; }
+}
+#customQuestionForm label{display:block;margin:10px 0} #customQuestionForm input,#customQuestionForm textarea,#customQuestionForm select{width:100%;box-sizing:border-box} #customError{color:#c64040}
+dialog{border:1px solid var(--border);border-radius:12px;padding:20px} dialog::backdrop{background:rgba(0,0,0,.55)}
+.picture-diagram{position:relative;width:100%;max-width:760px;margin:16px auto;background:#fff;line-height:0}
+.picture-diagram img{width:100%;height:auto;display:block}
+.picture-mask{position:absolute;display:flex;align-items:center;justify-content:center;background:#12385f;color:#fff;border-radius:2px;font-weight:bold;line-height:1;font-size:clamp(8px,2vw,16px);overflow:hidden}
+</style>
+</head>
+<body>
+<main>
+<section class="panel" id="setup">
+  <h1>IPAP Base Adaptive Program</h1>
+  <p class="notice" id="answerKeyRevision"><strong>Biochemistry Block 2 — Carb Metabolism &amp; Cell Signaling</strong></p>
+  <p class="small"><strong>216 questions installed.</strong> 140 Carb Metabolism questions and 76 Cell Signaling questions. Includes all 11 instructor multiple-choice questions and 8 items adapted from instructor learning checks. References use each deck’s visible-slide numbering: hidden slides are omitted, while visible non-testable slides still count.</p>
+
+  <div class="notice small">
+    <strong>Adaptive mastery:</strong> a missed question enters the Incorrect Bank. You can manually remove it at any time, or let it stay there until you answer it correctly
+    <strong>3 times in a row</strong>. Adaptive quizzes deliberately pull bank questions more often until they are mastered.<br><br>
+    <strong>Coverage rule:</strong> questions you answer correctly and that are not in the active Incorrect Bank will not recycle until every question in your selected test pool has been shown once. The only exception is an active Incorrect Bank question, which may repeat sooner so you can reach the 3-correct mastery streak.
+  </div>
+
+  <p id="statsScope" class="small"></p>
+  <div class="statgrid">
+    <div class="stat"><b id="bankCount">0</b><span class="small">Incorrect bank</span></div>
+    <div class="stat"><b id="masteredCount">0</b><span class="small">Mastered from bank</span></div>
+    <div class="stat"><b id="attemptCount">0</b><span class="small">Total attempts</span></div>
+    <div class="stat"><b id="accuracy">—</b><span class="small">Lifetime accuracy</span></div>
+  </div>
+
+  <div class="grid" style="margin-top:16px">
+    <label>Section
+      <select id="day"><option>Carb Metabolism</option><option>Cell Signaling</option></select>
+    </label>
+    <label>Question type
+      <select id="order"><option value="Mixed">Mixed first + second order</option><option value="First">First order only</option><option value="Second">Second order only</option></select>
+    </label>
+    <label>Quiz size
+      <select id="size">
+        <option value="10">10 questions</option>
+        <option value="25" selected>25 questions</option>
+        <option value="50">50 questions</option>
+        <option value="100">100 questions</option><option value="9999">Entire selected section / pool</option>
+      </select>
+    </label>
+    <label>Study mode
+      <select id="mode">
+        <option value="Adaptive" selected>Adaptive — prioritize missed</option>
+        <option value="Random">Random</option>
+        <option value="Unseen">New Questions Only</option>
+        <option value="Incorrect">Incorrect Bank only</option>
+      </select>
+    </label>
+    <label>Question source
+      <select id="source"><option value="Random" selected>All questions</option><option value="Slides">Slide questions</option><option value="Custom">My added questions</option></select>
+    </label>
+  </div>
+
+  <p id="coverageStatus" class="small storage"></p>
+  <div class="actions">
+    <button id="start">Start quiz</button>
+    <button id="studyBank" class="secondary">Study Incorrect Bank</button><button id="addOwnQuestion" type="button" class="secondary">Add Your Own Question</button>
+  </div>
+
+
+
+
+  <section class="panel" style="margin-top:16px; padding:14px">
+    <div class="topline">
+      <div>
+        <h2 style="margin-bottom:4px">What to Review</h2>
+        <p class="small" style="margin:0">General topics and slide ranges based only on your active Incorrect Bank.</p>
+      </div>
+      <button id="refreshRecommendations" type="button" class="secondary" style="width:auto; min-width:150px">Refresh recommendations</button>
+    </div>
+    <div id="reviewRecommendations" class="small"></div>
+  </section>
+
+  <details>
+    <summary>View Incorrect Bank</summary>
+    <div id="bankList" class="small"></div>
+  </details>
+
+  <details>
+    <summary>View Removed Questions</summary>
+    <p class="small">Questions removed as bad are excluded from all future quizzes until you restore them.</p>
+    <div id="removedList" class="small"></div>
+  </details>
+
+
+  <details id="wholeBank">
+    <summary>View whole question bank</summary>
+    <label>Search questions and answers<input id="bankSearch" type="search" placeholder="Search questions and answers"></label>
+    <label>Bank section<select id="bankDay"><option value="All">All sections</option><option>Carb Metabolism</option><option>Cell Signaling</option></select></label>
+    <p id="wholeBankCount" class="small"></p><div id="wholeBankList"></div>
+  </details>
+  <button id="resetProgress" type="button" class="danger" style="margin-top:16px">Reset all progress</button>
+
+</section>
+
+<section class="panel">
+  <div class="actions"><button id="exportProgress" type="button">Save Progress</button><button id="loadButton" type="button" class="secondary">Load Progress</button></div>
+  <input id="importProgress" type="file" accept=".json,application/json" hidden>
+  <p id="storageStatus" class="small storage"></p>
+  <p id="backupStatus" class="small" role="status"></p>
+  <div id="resumeSessionPanel" class="notice small hide"><strong>Saved quiz available.</strong>
+    <div class="actions"><button id="resumeSession" type="button">Resume saved quiz</button><button id="discardSession" type="button" class="secondary">Discard saved quiz</button></div>
+  </div>
+</section>
+<dialog id="confirmDialog"><p id="confirmMessage"></p><div class="actions"><button id="confirmYes" type="button" class="danger">Confirm</button><button id="confirmNo" type="button" class="secondary">Cancel</button></div></dialog>
+<dialog id="editDialog" style="width:min(650px,90vw);max-height:85vh;overflow:auto">
+  <form id="editForm"><h2>Edit question</h2><p class="small">Edits apply to unanswered and future questions. Previously scored answers remain in your history. Save Progress includes your edits.</p>
+    <label>Question<textarea id="editText" rows="4" required></textarea></label>
+    <div id="editChoices"></div><label>Correct answer<select id="editCorrect"><option value="0">A</option><option value="1">B</option><option value="2">C</option><option value="3">D</option><option value="4">E</option></select></label>
+    <div class="actions"><button type="submit">Save question</button><button id="cancelEdit" type="button" class="secondary">Cancel</button></div>
+  </form>
+</dialog>
+<section class="panel hide" id="quiz">
+  <div class="topline">
+    <strong id="counter">Question 1 of 25</strong>
+    <span class="small" id="scoreline">Score: 0 / 0</span>
+  </div>
+  <div class="progress"><div id="bar"></div></div>
+  <div class="small" id="meta"></div>
+  <div class="qtext" id="qtext"></div>
+  <div id="questionMedia"></div><div class="answers" id="answers"></div>
+  <div id="feedback" class="feedback hide" aria-live="polite"></div>
+  <div class="actions">
+    <button id="prev" class="secondary" disabled>Previous question</button>
+    <button id="next" disabled>Next question</button>
+    
+    <button id="editCurrent" type="button" class="secondary">Edit question</button>
+    <button id="removeBadQuestion" type="button" class="danger">Remove bad question</button>
+    <button id="quit" class="secondary">End quiz</button>
+  </div>
+  <p class="small" style="margin-top:8px">
+    You can remove a bad question <strong>before or after answering it</strong>. It will be excluded from future quizzes and can be restored later under View Removed Questions.
+  </p>
+</section>
+
+<section class="panel hide" id="results">
+  <h2>Quiz complete</h2>
+  <div class="statgrid">
+    <div class="stat"><b id="pct">0%</b><span class="small">Quiz score</span></div>
+    <div class="stat"><b id="correctCount">0</b><span class="small">Correct</span></div>
+    <div class="stat"><b id="missedCount">0</b><span class="small">Missed</span></div>
+    <div class="stat"><b id="bankAfter">0</b><span class="small">Incorrect bank</span></div>
+  </div>
+  <div class="actions">
+    <button id="again">New adaptive quiz</button>
+    <button id="retry" class="secondary">Retry missed this quiz</button>
+    <button id="resultsBank" class="secondary">Study Incorrect Bank</button>
+    <button id="home" class="secondary">Change settings</button>
+  </div>
+  <div id="missedReview" class="missed"></div>
+</section>
+<dialog id="customQuestionDialog" aria-labelledby="customQuestionTitle" style="width:min(700px,92vw);max-height:90vh;overflow:auto">
+  <form id="customQuestionForm">
+    <h2 id="customQuestionTitle">Add Your Own Question</h2>
+    <div class="grid"><label>Section<select id="customSection"></select></label><label>Question type<select id="customOrder"><option value="First">First order</option><option value="Second">Second order</option></select></label></div>
+    <label>Question<textarea id="customQuestionText" rows="3" required></textarea></label>
+    <label>Answer A<input id="customAnswer0" required></label>
+    <label>Answer B<input id="customAnswer1" required></label>
+    <label>Answer C<input id="customAnswer2" required></label>
+    <label>Answer D<input id="customAnswer3" required></label>
+    <label>Answer E<input id="customAnswer4" required></label>
+    <label>Correct answer<select id="customCorrect"><option value="0">A</option><option value="1">B</option><option value="2">C</option><option value="3">D</option><option value="4">E</option></select></label>
+    <label>Source slide numbers (optional)<input id="customSlideNumbers" placeholder="For example: 12, 13" inputmode="text"></label>
+    <p id="customError" role="alert"></p>
+    <div class="actions"><button type="submit">Add to test bank</button><button type="button" id="cancelCustomQuestion" class="secondary">Cancel</button></div>
+  </form>
+</dialog>
+
+</main>
+
+
+<dialog id="examImageDialog" style="width:min(1440px,98vw);max-height:94vh;overflow:auto;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:12px">
+<div style="position:sticky;top:0;z-index:2;background:var(--panel);display:flex;gap:16px;align-items:center;justify-content:space-between;padding:10px"><h2 id="examImageTitle" style="margin:0"></h2><button type="button" id="examImageClose" class="secondary" style="width:auto">Close</button></div><div id="examImageContent"></div></dialog>
+<script>
+const BANK = {"Carb Metabolism": {"Slides-First": [["Which sequence correctly describes the three stages of catabolism?", ["Macromolecules to monomers; monomers to key intermediates; acetyl coenzyme A to energy production", "Acetyl coenzyme A to monomers; monomers to macromolecules; energy storage", "Glucose to glycogen; glycogen to protein; protein to glucose", "Electron transport; digestion; formation of macromolecules", "Nucleotide synthesis; glycogen storage; digestion"], 0, 8, [8], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0001"], ["Which components make up adenosine triphosphate (ATP)?", ["Adenine, ribose, and three phosphate groups", "Adenine, ribose, and two phosphate groups", "Adenine, deoxyribose, and one phosphate group", "Glucose, adenine, and three phosphate groups", "Ribose, an acyl group, and two phosphate groups"], 0, 8, [8], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0002"], ["Which reaction releases energy from adenosine triphosphate (ATP)?", ["Hydrolysis to adenosine diphosphate and inorganic phosphate", "Conversion of adenosine diphosphate to ATP", "Conversion of glucose to glycogen without ATP hydrolysis", "Reduction of nicotinamide adenine dinucleotide phosphate", "Binding of an acyl group to coenzyme A"], 0, 8, [8], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0003"], ["Which vitamin supplies the precursors for nicotinamide adenine dinucleotide and its phosphate form?", ["Niacin (vitamin B3)", "Riboflavin (vitamin B2)", "Pantothenic acid (vitamin B5)", "Glucose", "Inorganic magnesium"], 0, 9, [9], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0004"], ["Which coenzyme is derived from riboflavin (vitamin B2)?", ["Flavin adenine dinucleotide (FAD)", "Coenzyme A", "Nicotinamide adenine dinucleotide (NAD+)", "Nicotinamide adenine dinucleotide phosphate (NADP+)", "Adenosine triphosphate (ATP)"], 0, 9, [9], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0005"], ["Which description distinguishes cofactors from coenzymes in these slides?", ["Cofactors are inorganic helpers; coenzymes are organic helpers", "Cofactors are organic helpers; coenzymes are inorganic helpers", "Both are exclusively inorganic metal ions", "Coenzymes are exclusively membrane receptors", "Cofactors carry only acyl groups"], 0, 9, [9], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0006"], ["A coenzyme gains electrons during a reaction. What has happened to it?", ["It has been reduced", "It has been oxidized", "It has been hydrolyzed to glucose", "It has become an irreversible enzyme", "It has undergone glycogenesis"], 0, 10, [10], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0007"], ["Which statement correctly pairs the forms of nicotinamide adenine dinucleotide?", ["NAD+ is oxidized; NADH is reduced", "NAD+ is reduced; NADH is oxidized", "Both forms are oxidized", "Both forms primarily carry acyl groups", "NADH is the vitamin precursor of NAD+"], 0, 12, [12], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0008"], ["What is a major function of reduced nicotinamide adenine dinucleotide (NADH)?", ["Carry high-energy electrons to the electron transport chain", "Carry acetyl groups between reactions", "Build glycogen directly from uridine diphosphate glucose", "Release stored glucose from the liver", "Transport fructose across the intestinal membrane"], 0, 12, [12], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0009"], ["Which function is emphasized for reduced nicotinamide adenine dinucleotide phosphate (NADPH)?", ["Provide reducing power for biosynthesis and maintain reduced glutathione", "Carry acyl groups through a thiol group", "Directly break glycogen into glucose-1-phosphate", "Phosphorylate glucose as an enzyme", "Convert lactate into pyruvate as an enzyme"], 0, 13, [13], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0010"], ["Which reduced coenzyme carries electrons for energy production and is derived from vitamin B2?", ["Reduced flavin adenine dinucleotide (FADH2)", "Reduced nicotinamide adenine dinucleotide phosphate (NADPH)", "Coenzyme A", "Uridine diphosphate glucose", "Glucose-6-phosphate"], 0, 14, [14], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0011"], ["Which statement describes coenzyme A?", ["It carries acyl groups and is derived from pantothenic acid", "It carries electrons and is derived from niacin", "It carries electrons and is derived from riboflavin", "It serves as the rate-limiting enzyme of glycolysis", "It is the primary intestinal fructose transporter"], 0, 15, [15], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0012"], ["What group on coenzyme A binds an acyl group?", ["A thiol (–SH) group", "A glucose-6-phosphate group", "A ribose-5-phosphate group", "A calcium ion", "A glycogen branch point"], 0, 15, [15], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0013"], ["Acetyl coenzyme A carries an acetyl group containing how many carbons?", ["Two", "One", "Three", "Five", "Six"], 0, 15, [15], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0014"], ["Which description correctly matches the fasting state?", ["Lower insulin, glucagon-driven fuel mobilization, and catabolism", "Higher insulin, glycogen synthesis, and anabolism", "Higher insulin, glucose storage, and lipogenesis", "Lower glucagon with increased glycogen storage", "Higher blood glucose with predominant nutrient storage"], 0, 18, [18], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0017"], ["What is the principal purpose of glycolysis?", ["Break down glucose to produce ATP and metabolic intermediates", "Synthesize glucose from noncarbohydrate sources", "Store glucose exclusively as glycogen", "Produce ribose without generating pyruvate", "Release glucose from liver glycogen only"], 0, 20, [20], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0018"], ["Where does glycolysis occur, and under which conditions can it operate?", ["Cytosol, under aerobic or anaerobic conditions", "Mitochondria, only under aerobic conditions", "Nucleus, only under anaerobic conditions", "Lysosomes, under aerobic or anaerobic conditions", "Endoplasmic reticulum, only during fasting"], 0, 20, [20], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0019"], ["One six-carbon glucose molecule produces which carbon products in glycolysis?", ["Two three-carbon pyruvate molecules", "One six-carbon pyruvate molecule", "Two six-carbon glycogen molecules", "Three two-carbon lactate molecules", "One five-carbon ribose molecule only"], 0, 20, [20], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0020"], ["Which glucose transporter is insulin dependent in muscle and adipose tissue?", ["Glucose transporter 4 (GLUT4)", "Glucose transporter 1 (GLUT1)", "Glucose transporter 2 (GLUT2)", "Glucose transporter 3 (GLUT3)", "Glucose transporter 5 (GLUT5)"], 0, 21, [21], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0021"], ["Which transporter primarily transports fructose?", ["Glucose transporter 5 (GLUT5)", "Glucose transporter 1 (GLUT1)", "Glucose transporter 2 (GLUT2)", "Glucose transporter 4 (GLUT4)", "Sodium-dependent glucose transporter 2 (SGLT2)"], 0, 21, [21], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0022"], ["Which transporter is associated with renal glucose reabsorption?", ["Sodium-dependent glucose transporter 2 (SGLT2)", "Sodium-dependent glucose transporter 1 (SGLT1)", "Glucose transporter 5 (GLUT5)", "Glucose transporter 4 (GLUT4)", "Glucose transporter 3 (GLUT3)"], 0, 21, [21], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0023"], ["Which transporter is associated with red blood cells, the blood-brain barrier, and the fetus?", ["Glucose transporter 1 (GLUT1)", "Glucose transporter 2 (GLUT2)", "Glucose transporter 3 (GLUT3)", "Glucose transporter 4 (GLUT4)", "Glucose transporter 5 (GLUT5)"], 0, 21, [21], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0024"], ["Which transporter is shown carrying glucose out of the enterocyte toward blood?", ["Glucose transporter 2 (GLUT2)", "Glucose transporter 4 (GLUT4)", "Glucose transporter 5 (GLUT5)", "Sodium-dependent glucose transporter 1 (SGLT1)", "Sodium-dependent glucose transporter 2 (SGLT2)"], 0, 21, [21], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0025"], ["Which transporter is listed for placenta, neurons, and kidneys?", ["Glucose transporter 3 (GLUT3)", "Glucose transporter 1 (GLUT1)", "Glucose transporter 4 (GLUT4)", "Glucose transporter 5 (GLUT5)", "Sodium-dependent glucose transporter 1 (SGLT1)"], 0, 21, [21], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0026"], ["Which glycolytic enzyme is emphasized in liver and pancreatic beta cells at step 1?", ["Glucokinase", "Phosphofructokinase-1", "Aldolase", "Pyruvate kinase", "Glucose-6-phosphatase"], 0, 25, [25], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0027"], ["Why does phosphorylation of glucose to glucose-6-phosphate matter?", ["It traps glucose inside the cell", "It releases glucose into blood", "It converts glucose directly into pyruvate", "It removes the sixth carbon from glucose", "It produces ribose for nucleotide synthesis directly"], 0, 25, [25], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0028"], ["Which enzymes catalyze the three irreversible glycolytic steps?", ["Hexokinase, phosphofructokinase-1, and pyruvate kinase", "Aldolase, lactate dehydrogenase, and glycogen synthase", "Glucose-6-phosphatase, aldolase B, and fructokinase", "Pyruvate carboxylase, glycogen synthase, and lactate dehydrogenase", "Phosphofructokinase-2, aldolase, and glucose-6-phosphate dehydrogenase"], 0, 25, [25, 26], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0029"], ["Which enzyme is emphasized at step 4 of glycolysis?", ["Aldolase", "Hexokinase", "Pyruvate kinase", "Glucose-6-phosphatase", "Glycogen phosphorylase"], 0, 25, [25], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0030"], ["Which enzyme produces fructose-2,6-bisphosphate, a regulator of glycolysis?", ["Phosphofructokinase-2", "Phosphofructokinase-1", "Pyruvate kinase", "Aldolase B", "Glucose-6-phosphatase"], 0, 26, [26], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0034"], ["Which molecule activates pyruvate kinase through feed-forward regulation?", ["Fructose-1,6-bisphosphate", "ATP", "Citrate", "Glucose-1-phosphate", "Galactitol"], 0, 26, [26], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0035"], ["What is the effect of high ATP on pyruvate kinase?", ["Inhibition", "Activation", "Conversion to lactate dehydrogenase", "Stimulation of glycogen branching", "Increased phosphate trapping in fructose-1-phosphate"], 0, 26, [26], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0036"], ["Why do the irreversible glycolytic reactions strongly favor the forward direction?", ["They have a large decrease in Gibbs free energy", "They have no energy change", "They all require oxygen directly", "They take place only in lysosomes", "They all produce glycogen"], 0, 26, [26], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0037"], ["What is the net yield of glycolysis per glucose molecule?", ["2 ATP, 2 NADH, and 2 pyruvate", "4 ATP, 2 NADH, and 1 pyruvate", "2 ATP, 4 NADH, and 2 acetyl coenzyme A", "1 ATP, 2 NADPH, and 2 lactate", "2 ATP, 2 FADH2, and 1 glucose"], 0, 27, [27], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0038"], ["In the liver, fructose enters glycolysis primarily through which intermediates?", ["Dihydroxyacetone phosphate and glyceraldehyde-3-phosphate", "Glucose-1-phosphate and glycogen", "Ribose-5-phosphate and galactitol", "Lactate and acetyl coenzyme A", "Oxaloacetate and phosphoenolpyruvate"], 0, 33, [33, 35], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0039"], ["Which enzyme converts fructose to fructose-1-phosphate in the liver?", ["Fructokinase", "Aldolase B", "Galactokinase", "Glycogen synthase", "Glucose-6-phosphatase"], 0, 35, [35], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0040"], ["Which enzyme acts on fructose-1-phosphate in hepatic fructose metabolism?", ["Aldolase B", "Fructokinase", "Hexokinase", "Pyruvate kinase", "Lactate dehydrogenase"], 0, 35, [35], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0041"], ["How does fructose enter glycolysis in muscle and kidney?", ["Hexokinase converts it to fructose-6-phosphate", "Galactokinase converts it to glucose-1-phosphate", "Glycogen synthase converts it to glycogen directly", "Lactate dehydrogenase converts it to lactate", "Glucose-6-phosphatase converts it to glucose"], 0, 33, [33, 36], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0042"], ["What treatment is listed for essential fructosuria?", ["No treatment", "Avoid all milk", "Avoid sucrose and fructose", "Treat with insulin to stimulate glycogenesis", "Avoid all exercise"], 0, 37, [37], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0044"], ["Which dietary restriction is listed for hereditary fructose intolerance?", ["Avoid sucrose and fructose", "Avoid milk alone", "Avoid fava beans alone", "Avoid all glucose", "Avoid all sources of riboflavin"], 0, 38, [38], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0046"], ["Which sequence describes galactose entry into glycolysis?", ["Galactose to galactose-1-phosphate to glucose-1-phosphate to glucose-6-phosphate", "Galactose to fructose-1-phosphate to lactate", "Galactose to ribose-5-phosphate to acetyl coenzyme A", "Galactose to glucose-6-phosphate to galactitol", "Galactose to pyruvate to glycogen directly"], 0, 33, [33, 40], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0048"], ["Which enzyme phosphorylates galactose?", ["Galactokinase", "Fructokinase", "Hexokinase", "Aldolase B", "Glycogen phosphorylase"], 0, 40, [40], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0049"], ["Which enzyme converts galactose to galactitol in the diagram?", ["Aldose reductase", "Galactokinase", "Fructokinase", "Glucose-6-phosphatase", "Pyruvate kinase"], 0, 40, [40], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0050"], ["In hepatocytes, galactose metabolism produces which intermediate that can enter glycolysis or glycogenesis?", ["Glucose-6-phosphate", "Fructose-1-phosphate", "Acetyl coenzyme A", "Lactate", "Ribose-5-phosphate"], 0, 40, [40], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0051"], ["Which enzyme deficiency causes classic galactosemia in these slides?", ["Galactose-1-phosphate uridyltransferase (GALT)", "Aldolase B", "Fructokinase", "Phosphofructokinase-1", "Lactate dehydrogenase"], 0, 41, [41], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0052"], ["Which accumulated compound is associated with cataracts in galactosemia?", ["Galactitol", "Fructose-6-phosphate", "Pyruvate", "Lactate", "Ribose-5-phosphate"], 0, 41, [41], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0053"], ["Which dietary change is listed for galactosemia?", ["Avoid milk as a source of galactose", "Avoid fructose and sucrose only", "Avoid fava beans only", "Increase milk intake", "Avoid glucose transporters"], 0, 41, [41], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0054"], ["Which tissue is emphasized in phosphofructokinase-1 deficiency (Tarui disease)?", ["Skeletal muscle", "Gastric parietal cells", "Intestinal enterocytes", "Adipose tissue only", "Pancreatic alpha cells"], 0, 43, [43], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0056"], ["Which findings are associated with pyruvate kinase deficiency?", ["Hemolytic anemia, jaundice, fatigue, and no Heinz bodies", "Hepatomegaly with asymptomatic fructose excretion", "Cataracts with galactose-1-phosphate accumulation", "Cardiomyopathy with lysosomal glycogen accumulation", "Exercise intolerance with no lactate rise as the only finding"], 0, 44, [44], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0059"], ["What are the main purposes of the pentose phosphate pathway?", ["Produce NADPH and ribose-5-phosphate", "Produce only ATP and pyruvate", "Store glucose as glycogen", "Convert lactate to acetyl coenzyme A", "Release glucose from glycogen"], 0, 49, [49], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0061"], ["Where does the pentose phosphate pathway occur?", ["Cytosol", "Mitochondrial matrix only", "Lysosome", "Nucleus only", "Extracellular fluid"], 0, 49, [49], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0062"], ["Which tissues are emphasized as highly active in the pentose phosphate pathway?", ["Liver, lactating mammary gland, and red blood cells", "Only skeletal muscle and neurons", "Only pancreas and renal medulla", "Only gastric parietal cells and bone", "Only intestinal lumen and plasma"], 0, 49, [49], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0063"], ["Which substrate enters the pentose phosphate pathway at its branch from glycolysis?", ["Glucose-6-phosphate", "Pyruvate", "Lactate", "Acetyl coenzyme A", "UDP-glucose"], 0, 50, [50], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0064"], ["What is the rate-limiting enzyme of the pentose phosphate pathway?", ["Glucose-6-phosphate dehydrogenase", "Glucose-6-phosphatase", "Phosphofructokinase-1", "Glycogen phosphorylase", "Pyruvate carboxylase"], 0, 50, [50], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0065"], ["How do the two pentose phosphate pathway phases differ in reversibility?", ["The oxidative phase is irreversible; the nonoxidative phase is reversible", "Both phases are irreversible", "Both phases are reversible", "The oxidative phase is reversible; the nonoxidative phase is irreversible", "Neither phase contains metabolic reactions"], 0, 49, [49], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0066"], ["Which products of the nonoxidative pentose phosphate pathway can reconnect with glycolysis?", ["Fructose-6-phosphate and glyceraldehyde-3-phosphate", "Fructose-1-phosphate and galactitol", "Acetyl coenzyme A and lactate", "UDP-glucose and glycogen", "Oxaloacetate and carbon dioxide"], 0, 49, [49, 50], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0067"], ["Ribose-5-phosphate supports which process?", ["Nucleotide synthesis", "Direct glycogen cleavage", "Hemoglobin oxygen unloading through 2,3-bisphosphoglycerate", "Lactate oxidation by lactate dehydrogenase", "Phosphorylation of fructose by fructokinase"], 0, 49, [49], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0068"], ["Which biosynthetic processes use NADPH according to the slides?", ["Fatty acid and cholesterol synthesis", "Glycogen cleavage and lactate formation only", "Pyruvate oxidation and glycogenolysis only", "Glucose transport and intestinal absorption only", "Protein digestion and sodium pumping only"], 0, 49, [49], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0069"], ["What are Heinz bodies?", ["Precipitated, denatured hemoglobin caused by oxidative stress", "Glycogen stored in lysosomes", "Fructose crystals in urine", "Accumulated galactitol in the lens", "Aggregates of pyruvate kinase"], 0, 52, [52], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0071"], ["How do bite cells form?", ["Splenic macrophages remove Heinz bodies from red blood cells", "Liver cells remove glycogen from muscle", "Glucose enters red blood cells through GLUT4", "Lactate removes phosphate from hemoglobin", "Galactitol damages the red blood cell membrane directly"], 0, 52, [52], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0072"], ["Which set contains triggers for hemolysis in glucose-6-phosphate dehydrogenase deficiency?", ["Infections, fava beans, and oxidant drugs", "Milk, galactose, and lactose exclusively", "Glucose, insulin, and glycogenesis", "Exercise, citrate, and ATP exclusively", "Riboflavin, niacin, and pantothenic acid"], 0, 53, [53], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0073"], ["Under aerobic conditions, where does pyruvate move for further oxidation?", ["From cytosol into mitochondria", "From mitochondria into lysosomes", "From nucleus into cytosol", "From liver into the intestinal lumen", "From red blood cells into their mitochondria"], 0, 57, [57], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0075"], ["Which enzyme complex converts pyruvate into acetyl coenzyme A?", ["Pyruvate dehydrogenase complex", "Lactate dehydrogenase", "Pyruvate kinase", "Pyruvate carboxylase", "Phosphofructokinase-1"], 0, 57, [57], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0076"], ["Besides acetyl coenzyme A, what is produced during pyruvate oxidation described in the slides?", ["NADH and carbon dioxide", "NADPH and ribose", "ATP and glycogen", "Galactitol and phosphate", "Lactate and NAD+"], 0, 57, [57], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0077"], ["Which enzyme converts pyruvate to lactate?", ["Lactate dehydrogenase", "Pyruvate dehydrogenase", "Pyruvate carboxylase", "Pyruvate kinase", "Aldolase B"], 0, 58, [58, 61], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0078"], ["Which sequence describes the Cori cycle?", ["Muscle lactate travels to liver, becomes glucose, and returns to muscle", "Liver glycogen travels to muscle and becomes galactitol", "Muscle glucose travels to liver and becomes fructose only", "Liver lactate travels to muscle for gluconeogenesis", "Muscle NADPH travels to liver to become glycogen"], 0, 59, [59], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0080"], ["Which group is listed as causes of type A lactic acidosis?", ["Shock, severe sepsis, and severe hypoxemia", "Alcohol use, liver failure, and metformin only", "Galactosemia, fructosuria, and cataracts only", "Insulin exposure, fed state, and glycogenesis", "Niacin deficiency, riboflavin deficiency, and pantothenic acid deficiency"], 0, 62, [62], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0083"], ["What characterizes type B lactic acidosis?", ["Lactate accumulation without significant tissue hypoxia or hypoperfusion", "Lactate accumulation only during severe hypoxemia", "Lactate accumulation only from exercise-induced tissue hypoxia", "Exclusively increased oxygen delivery", "Absence of altered metabolism or impaired clearance"], 0, 63, [63], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0084"], ["Which medications are listed as examples associated with type B lactic acidosis?", ["Metformin, propofol, and nucleoside reverse transcriptase inhibitors", "Amlodipine, cimetidine, and omeprazole", "Insulin, glucagon, and epinephrine", "Niacin, riboflavin, and pantothenic acid", "Fructokinase, aldolase B, and galactokinase"], 0, 63, [63], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0086"], ["What is the combined yield listed for glycolysis plus aerobic pyruvate oxidation, before further oxidation?", ["2 ATP and 4 NADH", "2 ATP and 2 NADH", "4 ATP and 4 NADPH", "2 ATP and no NADH", "4 ATP and 2 FADH2"], 0, 64, [64], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0087"], ["What net energy yield is listed for anaerobic glycolysis with conversion of pyruvate to lactate?", ["2 ATP", "4 ATP", "2 NADPH only", "4 NADH and 2 ATP", "2 FADH2 only"], 0, 64, [64], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0088"], ["Where is glycogen stored as a glucose reserve?", ["Liver and skeletal muscle", "Red blood cells and plasma", "Only the intestinal lumen", "Only the nucleus", "Only gastric parietal cells"], 0, 68, [68], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0089"], ["Which bonds characterize glycogen?", ["Alpha-1,4 bonds with alpha-1,6 branch points", "Alpha-1,6 bonds with alpha-1,4 branch points", "Only beta-1,4 bonds without branches", "Only peptide bonds", "Only phosphodiester bonds"], 0, 68, [68], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0090"], ["Which molecule is the activated glucose donor used to build glycogen?", ["Uridine diphosphate glucose (UDP-glucose)", "Glucose-6-phosphate alone", "Fructose-1-phosphate", "Ribose-5-phosphate", "Galactitol"], 0, 69, [69], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0092"], ["Which nucleotide reacts with glucose-1-phosphate to form UDP-glucose?", ["Uridine triphosphate (UTP)", "Adenosine monophosphate (AMP)", "Nicotinamide adenine dinucleotide (NAD+)", "Flavin adenine dinucleotide (FAD)", "Cyclic adenosine monophosphate (cAMP)"], 0, 69, [69], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0093"], ["Which enzyme adds glucose from UDP-glucose to a growing glycogen chain?", ["Glycogen synthase", "Glycogen phosphorylase", "Glucose-6-phosphatase", "Lactate dehydrogenase", "Fructokinase"], 0, 69, [69, 70], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0094"], ["Which hormone and state stimulate glycogenesis?", ["Insulin in the fed state", "Glucagon during fasting", "Epinephrine during fuel mobilization", "Glucagon in skeletal muscle only", "Low blood glucose with low insulin"], 0, 69, [69, 70], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0095"], ["Which enzyme breaks glycogen into glucose-1-phosphate?", ["Glycogen phosphorylase", "Glycogen synthase", "Hexokinase", "Galactokinase", "Pyruvate carboxylase"], 0, 72, [72], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0096"], ["What happens to glucose-1-phosphate after its release from glycogen?", ["It is converted to glucose-6-phosphate", "It is converted directly to galactitol", "It enters the electron transport chain unchanged", "It becomes riboflavin", "It becomes NADPH without further reactions"], 0, 72, [72], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0097"], ["Which enzyme allows liver glucose-6-phosphate to become glucose for release?", ["Glucose-6-phosphatase", "Glucose-6-phosphate dehydrogenase", "Glycogen synthase", "Phosphofructokinase-1", "Pyruvate kinase"], 0, 72, [72, 73], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0099"], ["Which statement correctly describes hormonal stimulation of glycogenolysis?", ["Glucagon acts in liver; epinephrine acts in liver and muscle", "Glucagon acts only in muscle; epinephrine acts only in liver", "Insulin is its principal stimulant in the fed state", "Epinephrine inhibits it in both liver and muscle", "Glucagon stimulates glycogen synthesis instead"], 0, 72, [72], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0100"], ["Which second messenger is listed as stimulating glycogenolysis?", ["Cyclic adenosine monophosphate (cAMP)", "Ribose-5-phosphate", "Galactitol", "UDP-glucose", "Fructose-1-phosphate"], 0, 73, [73], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0101"], ["Which enzyme is deficient in Pompe disease?", ["Lysosomal acid alpha-glucosidase", "Glucose-6-phosphatase", "Debranching enzyme", "Muscle glycogen phosphorylase", "Galactose-1-phosphate uridyltransferase"], 0, 77, [77], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0103"], ["Which defect causes Cori disease?", ["Debranching enzyme deficiency", "Lysosomal acid alpha-glucosidase deficiency", "Glucose-6-phosphatase deficiency", "Fructokinase deficiency", "Pyruvate kinase deficiency"], 0, 77, [77], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0105"], ["Which enzyme defect causes McArdle disease?", ["Muscle glycogen phosphorylase deficiency", "Phosphofructokinase-1 deficiency", "Lysosomal acid alpha-glucosidase deficiency", "Glucose-6-phosphatase deficiency", "Aldolase B deficiency"], 0, 77, [77], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0107"], ["What is the purpose of gluconeogenesis?", ["Make glucose from noncarbohydrate sources to maintain blood glucose", "Break down glucose to produce pyruvate", "Store glucose as glycogen after meals", "Generate only NADPH and ribose", "Convert glycogen to glucose-1-phosphate"], 0, 78, [78], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0109"], ["Where does gluconeogenesis occur primarily, with a lesser contribution from which site?", ["Liver, with a lesser contribution from renal cortex", "Skeletal muscle, with a lesser contribution from red blood cells", "Red blood cells, with a lesser contribution from liver", "Adipose tissue, with a lesser contribution from intestinal lumen", "Pancreas, with a lesser contribution from gastric parietal cells"], 0, 78, [78], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0110"], ["Which set contains noncarbohydrate sources listed for gluconeogenesis?", ["Amino acids, lactate, pyruvate, and glycerol", "Glucose, fructose, galactose, and glycogen", "Ribose, glucose, sucrose, and galactitol", "NADPH, NADH, FADH2, and ATP", "Insulin, glucagon, epinephrine, and cortisol"], 0, 78, [78], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0111"], ["Which enzyme converts pyruvate to oxaloacetate in gluconeogenesis?", ["Pyruvate carboxylase", "Pyruvate kinase", "Lactate dehydrogenase", "Phosphofructokinase-1", "Glucose-6-phosphatase"], 0, 79, [79], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0113"], ["Which enzyme converts oxaloacetate to phosphoenolpyruvate?", ["Phosphoenolpyruvate carboxykinase (PEPCK)", "Pyruvate carboxylase", "Pyruvate dehydrogenase", "Glycogen synthase", "Hexokinase"], 0, 79, [79], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0114"], ["Which enzyme bypasses glycolytic step 3 during gluconeogenesis?", ["Fructose-1,6-bisphosphatase", "Phosphofructokinase-1", "Phosphofructokinase-2", "Aldolase B", "Fructokinase"], 0, 79, [79], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0115"], ["Which enzyme bypasses glycolytic step 1 during gluconeogenesis?", ["Glucose-6-phosphatase", "Hexokinase", "Glucokinase", "Glucose-6-phosphate dehydrogenase", "Glycogen phosphorylase"], 0, 79, [79], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0116"], ["Which statement describes reciprocal regulation of glycolysis and gluconeogenesis?", ["When one is active, the other is suppressed", "Both must operate at maximal rates simultaneously", "Neither responds to insulin", "Both are stimulated by AMP", "Both are inhibited by glucagon in liver"], 0, 82, [82], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0121"], ["Which molecule is the central branch point connecting the major carbohydrate pathways?", ["Glucose-6-phosphate", "Galactitol", "Lactate", "Fructose-1-phosphate", "UDP-galactose"], 0, 89, [89, 92], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0124"], ["Which molecule connects carbohydrate, lipid, and protein metabolism?", ["Acetyl coenzyme A", "Galactose-1-phosphate", "Glucose transporter 5", "Cyclic adenosine monophosphate", "Glycogen phosphorylase"], 0, 89, [89], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0125"], ["Which transporter moves glucose from the intestinal lumen into the enterocyte?", ["GLUT5", "GLUT3", "SGLT1", "SGLT2", "GLUT2"], 2, 22, [22, 23], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0198"], ["What is the rate-limiting enzyme of glycolysis?", ["Hexokinase", "Pyruvate kinase", "Phosphofructokinase-1 (PFK-1)", "Glucose-6-phosphatase", "Glycogen phosphorylase"], 2, 29, [29, 30], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0199"], ["Which process is activated by low levels of blood glucose?", ["Glycolysis", "Glycogenesis", "Glycogenolysis", "Gluconeogenesis", "Pentose phosphate pathway"], 2, 75, [75, 76], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0209"], ["Which process converts glucose-1-phosphate to glucose-6-phosphate during glycogen breakdown?", ["Glycolysis", "Glycogenesis", "Glycogenolysis", "Gluconeogenesis", "Pentose phosphate pathway"], 2, 75, [75, 76], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0210"], ["Which process is activated by high levels of glucose-6-phosphate in the learning check?", ["Glycolysis", "Glycogenesis", "Glycogenolysis", "Gluconeogenesis", "Pentose phosphate pathway"], 1, 75, [75, 76], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0211"], ["Formation of UDP-glucose using UTP belongs to which process?", ["Glycolysis", "Glycogenesis", "Glycogenolysis", "Gluconeogenesis", "Pentose phosphate pathway"], 1, 75, [75, 76], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0212"], ["Which process is the synthesis of glucose from noncarbohydrates?", ["Glycolysis", "Glycogenesis", "Glycogenolysis", "Gluconeogenesis", "Pentose phosphate pathway"], 3, 84, [84, 85], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0213"], ["Which process is the breakdown of glycogen into glucose?", ["Glycolysis", "Glycogenesis", "Glycogenolysis", "Gluconeogenesis", "Pentose phosphate pathway"], 2, 84, [84, 85], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0214"], ["Which process is the oxidation of glucose to two pyruvate molecules?", ["Glycolysis", "Glycogenesis", "Glycogenolysis", "Gluconeogenesis", "Pentose phosphate pathway"], 0, 84, [84, 85], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0215"], ["Which process is the synthesis of glycogen from glucose?", ["Glycolysis", "Glycogenesis", "Glycogenolysis", "Gluconeogenesis", "Pentose phosphate pathway"], 1, 84, [84, 85], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0216"]], "Slides-Second": [["After a meal, insulin rises. Which pair of carbohydrate pathways is favored?", ["Glycolysis and glycogenesis", "Glycogenolysis and gluconeogenesis", "Glycogenolysis and lipolysis", "Gluconeogenesis and glycogenolysis in muscle", "Only gluconeogenesis and lactate clearance"], 0, 18, [18], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0015"], ["As fasting continues and glycogen stores decline, which process becomes important for maintaining blood glucose?", ["Gluconeogenesis", "Glycogenesis", "Insulin-stimulated glucose storage", "Conversion of glucose to triacylglycerols", "Increased intestinal glucose absorption"], 0, 18, [18], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0016"], ["Glucose-6-phosphate accumulates in a cell. Which glycolytic enzyme is directly inhibited according to the slides?", ["Hexokinase", "Aldolase B", "Lactate dehydrogenase", "Glycogen synthase", "Pyruvate carboxylase"], 0, 26, [26], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0031"], ["A cell has increased ATP and citrate. What effect is expected on phosphofructokinase-1?", ["Inhibition, reducing glycolysis", "Activation, increasing glycolysis", "Conversion into phosphofructokinase-2", "Increased glucose export through this enzyme", "Direct stimulation of glycogen cleavage"], 0, 26, [26], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0032"], ["An increase in AMP and ADP signals low cellular energy. How does phosphofructokinase-1 respond?", ["Its activity increases", "Its activity decreases", "It begins converting lactate to glucose", "It becomes glucose-6-phosphatase", "It stops responding to regulatory molecules"], 0, 26, [26], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0033"], ["A patient has fructose in the urine but no symptoms. Which enzyme deficiency best fits?", ["Fructokinase deficiency", "Aldolase B deficiency", "Pyruvate kinase deficiency", "Glucose-6-phosphate dehydrogenase deficiency", "Galactose-1-phosphate uridyltransferase deficiency"], 0, 37, [37], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0043"], ["A child develops vomiting, hypoglycemia, jaundice, and hepatomegaly after fructose ingestion. Which accumulated compound explains phosphate trapping?", ["Fructose-1-phosphate", "Fructose-6-phosphate", "Ribose-5-phosphate", "Glucose-1-phosphate", "Galactitol"], 0, 38, [38], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0045"], ["Why can aldolase B deficiency impair both glycogenolysis and gluconeogenesis?", ["Phosphate trapping reduces available phosphate and ATP", "Excess NADPH directly blocks both pathways", "Excess insulin destroys liver glycogen", "Increased lactate clearance prevents glucose synthesis", "Fructose is converted directly into glycogen without regulation"], 0, 38, [38, 86], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0047"], ["Galactose-1-phosphate accumulates in classic galactosemia. Which consequence links it to hypoglycemia?", ["Phosphate trapping impairs glycogenolysis and gluconeogenesis", "Increased phosphate availability accelerates glucose storage", "Increased glycogenolysis removes all liver glycogen instantly", "Galactitol increases glucose export", "NADPH directly converts glucose to lactate"], 0, 41, [41, 86], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0055"], ["A glycolytic enzyme deficiency causes rhabdomyolysis and myoglobinuria. What urine change is described?", ["Rust-colored urine", "Urine containing only excess fructose without symptoms", "Urine with increased ribose alone", "Urine with excess glycogen but no muscle symptoms", "Urine with increased galactitol as the defining finding"], 0, 43, [43], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0057"], ["Why are red blood cells vulnerable to pyruvate kinase deficiency?", ["They lack mitochondria and depend on glycolysis for ATP", "They obtain all ATP from glycogenolysis", "They use the pentose phosphate pathway as their only ATP source", "They depend on gluconeogenesis to make ATP", "They cannot produce lactate"], 0, 44, [44], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0058"], ["In pyruvate kinase deficiency, increased 2,3-bisphosphoglycerate has which compensatory effect?", ["Decreased hemoglobin oxygen affinity, promoting tissue oxygen release", "Increased hemoglobin oxygen affinity, preventing tissue release", "Direct regeneration of NADPH", "Restoration of pyruvate kinase activity", "Conversion of hemoglobin into Heinz bodies"], 0, 44, [44], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0060"], ["Why does glucose-6-phosphate dehydrogenase deficiency predispose to oxidative hemolysis?", ["Less NADPH reduces maintenance of reduced glutathione", "More NADPH increases oxidative damage", "More ATP traps phosphate in glycogen", "Less lactate directly precipitates glycogen", "More glutathione prevents red blood cell production"], 0, 51, [51, 52], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0070"], ["A patient with glucose-6-phosphate dehydrogenase deficiency asks how to reduce hemolytic episodes. Which approach follows the slides?", ["Avoid oxidative triggers and treat infections promptly", "Increase fava bean intake", "Avoid all glucose and ribose", "Use oxidant drugs to increase NADPH", "Eliminate milk as the only intervention"], 0, 51, [51, 53], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0074"], ["During limited oxygen availability, why does converting pyruvate to lactate help sustain glycolysis?", ["It regenerates NAD+ from NADH", "It generates NADPH from NADP+", "It directly produces acetyl coenzyme A", "It creates new mitochondria", "It converts glycogen into UDP-glucose"], 0, 58, [58, 60], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0079"], ["Why do red blood cells rely on lactate production to regenerate NAD+?", ["They lack mitochondria", "They lack glucose transporters", "They have no glycolytic enzymes", "They use only fatty acids for energy", "They contain excessive glycogen synthase"], 0, 60, [60, 61], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0081"], ["Shock with inadequate tissue oxygen delivery leads to lactate accumulation. Which sequence explains this?", ["Electron transport slows, NADH accumulates, and pyruvate is diverted to lactate", "Electron transport accelerates, NADH falls, and lactate clearance increases", "Glucose transport stops and glycogen is converted directly to lactate", "NADPH becomes the final electron acceptor", "Lactate production stops because NAD+ cannot be formed"], 0, 62, [62], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0082"], ["How can alcohol use favor lactate accumulation?", ["Increased NADH favors conversion of pyruvate to lactate", "Decreased NADH prevents lactate formation", "Increased NADPH converts lactate directly to glycogen", "Increased insulin clears all lactate", "Alcohol supplies pyruvate kinase directly"], 0, 63, [63], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0085"], ["When glycogen storage capacity is limited and glucose remains excessive, what can happen to the excess glucose?", ["It can be converted to triacylglycerols", "It must be converted to galactitol", "It can only be excreted unchanged", "It directly becomes reduced glutathione", "It stops all insulin signaling"], 0, 68, [68], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0091"], ["How do liver and muscle differ in their use of glucose-6-phosphate from glycogenolysis?", ["Liver can release glucose into blood; muscle uses it in glycolysis for energy", "Muscle releases glucose into blood; liver only uses it for contraction", "Both export glycogen directly into blood", "Both convert it exclusively to galactitol", "Neither uses it for energy or glucose maintenance"], 0, 72, [72, 73], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0098"], ["Severe fasting hypoglycemia and hepatomegaly occur because liver glucose-6-phosphate cannot become free glucose. Which disease fits?", ["Von Gierke disease", "Pompe disease", "Cori disease", "McArdle disease", "Essential fructosuria"], 0, 77, [77], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0102"], ["Cardiomyopathy, muscle weakness, and lysosomal glycogen accumulation suggest which disorder?", ["Pompe disease", "Von Gierke disease", "Cori disease", "McArdle disease", "Tarui disease"], 0, 77, [77], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0104"], ["Incomplete glycogen breakdown with hypoglycemia, hepatomegaly, and possible muscle weakness is associated with which disease?", ["Cori disease", "Essential fructosuria", "Classic galactosemia", "Pyruvate kinase deficiency", "Hereditary fructose intolerance"], 0, 77, [77], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0106"], ["A patient cannot effectively use stored muscle glycogen and has exercise intolerance and cramps. Which disease is described?", ["McArdle disease", "Von Gierke disease", "Pompe disease", "Classic galactosemia", "Essential fructosuria"], 0, 77, [77], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0108"], ["Why is gluconeogenesis especially important as fasting depletes glycogen?", ["It maintains blood glucose for glucose-dependent tissues, especially red blood cells and brain", "It replaces all glycolysis in red blood cells", "It converts liver glycogen into muscle glycogen directly", "It eliminates the need for glucose in the brain", "It creates glucose exclusively from dietary carbohydrates"], 0, 78, [78], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0112"], ["Why is gluconeogenesis not simply glycolysis in reverse?", ["Different enzymes bypass glycolysis's irreversible steps", "All glycolytic reactions are reversible without modification", "It uses only glycogen as its starting material", "It takes place only in red blood cells", "It avoids formation of glucose entirely"], 0, 78, [78, 79], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0117"], ["How does increased AMP affect glycolysis and gluconeogenesis?", ["Favors glycolysis and inhibits gluconeogenesis", "Inhibits glycolysis and favors gluconeogenesis", "Activates both equally", "Inhibits both equally", "Has no relationship to either pathway"], 0, 82, [82], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0118"], ["How does increased ATP affect the balance of these pathways?", ["Inhibits glycolysis and favors gluconeogenesis", "Favors glycolysis and inhibits gluconeogenesis", "Activates only glycogenolysis in red blood cells", "Stops all glucose production", "Directly converts fructose into galactose"], 0, 82, [82], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0119"], ["During fight-or-flight, how does epinephrine affect glycolysis in muscle versus liver?", ["Stimulates muscle glycolysis but inhibits liver glycolysis", "Inhibits muscle glycolysis but stimulates liver glycolysis", "Inhibits both equally", "Stimulates both without a tissue difference", "Only affects glycolysis in red blood cells"], 0, 82, [82], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0120"], ["How does low inorganic phosphate impair glucose availability during phosphate trapping?", ["It impairs glycogen breakdown", "It directly increases glycogen synthesis without enzymes", "It stimulates lactate clearance", "It increases glucose export from all tissues", "It activates aldolase B"], 0, 86, [86], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0122"], ["Why does phosphate trapping interfere with gluconeogenesis?", ["Low ATP impairs glucose synthesis", "High ATP forces glucose into lactate", "Excess ribose prevents glucose transport", "Glutathione cannot bind glycogen", "Galactitol directly replaces pyruvate carboxylase"], 0, 86, [86], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0123"], ["Why is fructose-2,6, bisphosphate a regulator of PFK-1?", ["It serves as the primary substrate for PFK-1 during glycolysis", "It is produced during the TCA cycle and signals high cellular energy stores", "It acts as a potent allosteric activator of PFK-1, promoting glycolysis in the fed state", "It directly converts fructose-6-phosphate to fructose-1,6-bisphosphate", "It inhibits pyruvate kinase, slowing glycolytic flux"], 2, 31, [31, 32], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0200"], ["A 22-year-old patient develops severe muscle cramps and exercise intolerance during physical activity. Following intense exercise, the patient notices rust-colored urine due to myoglobinuria. Laboratory testing shows no rise in lactate levels after exercise. Which glycolytic disorder is the most likely diagnosis?", ["Pyruvate kinase deficiency", "Von Gierke disease", "McArdle disease", "PFK-1 deficiency", "Pompe disease"], 3, 45, [45, 46], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0201"], ["Why can liver failure cause Type B lactic acidosis?", ["The liver produces excessive oxygen", "The liver cannot adequately clear and metabolize lactate", "The liver blocks glycolysis in skeletal muscle", "The liver increases renal lactate excretion", "The liver converts lactate directly to ketone bodies"], 1, 65, [65, 66], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0202"], ["A patient develops hemolytic anemia after significant oxidative stress. Deficiency of which enzyme should be suspected?", ["Pyruvate carboxylase", "Glucose-6-phosphate dehydrogenase", "Glycogen synthase", "Lactate dehydrogenase", "Fructokinase"], 1, 87, [87, 88], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0203"], ["A 2-week-old infant develops vomiting, jaundice, hepatomegaly, and cataracts after starting breast milk feeds. Laboratory testing suggests accumulation of a phosphorylated sugar that traps inorganic phosphate within cells. Which of the following disorders is the most likely diagnosis?", ["Hereditary fructose intolerance", "McArdle disease", "Tarui disease", "Classic galactosemia", "Essential fructosuria"], 3, 90, [90, 91], null, "Carbohydrate Metabolism", null, null, "biochem2-c-0204"]]}, "Cell Signaling": {"Slides-First": [["Which metabolic processes does glucagon stimulate to help maintain blood glucose?", ["Glycogen breakdown and gluconeogenesis", "Glycogen synthesis and glucose storage", "Only membrane phospholipid synthesis", "Only steroid receptor transcription", "Only intestinal fructose absorption"], 0, 4, [4], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0127"], ["How are membrane phospholipids oriented in a bilayer?", ["Hydrophilic heads face water; hydrophobic tails face inward", "Hydrophobic tails face water; heads face inward", "Both heads and tails face only the cytoplasm", "Heads form a nonpolar central core", "Tails bind directly to DNA inside the nucleus"], 0, 6, [6, 7], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0128"], ["Which composition describes a membrane phospholipid?", ["A hydrophilic phosphate head and two hydrophobic fatty acid tails", "A hydrophobic phosphate head and two hydrophilic tails", "Three hydrophilic phosphate heads and no tails", "One protein head and three glucose tails", "A steroid receptor and two calcium ions"], 0, 6, [6], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0129"], ["Which function is provided by the cell membrane?", ["Selective permeability and a platform for transport and signaling", "Unrestricted entry of every substance", "Direct conversion of all signals into DNA", "Exclusive storage of glycogen", "Elimination of boundaries between organelles"], 0, 6, [6], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0130"], ["Which phospholipid is a major structural component of eukaryotic membranes and supports fluidity?", ["Phosphatidylcholine", "Phosphatidylserine", "Phosphatidylinositol", "Cardiolipin", "Sphingomyelin"], 0, 8, [8], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0131"], ["Which inner-leaflet phospholipid contributes to membrane curvature and vesicle formation?", ["Phosphatidylethanolamine", "Phosphatidylcholine", "Cardiolipin", "Sphingomyelin", "Cholesterol"], 0, 8, [8], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0132"], ["Which membrane phospholipid is a precursor for second messengers such as IP3 and DAG?", ["Phosphatidylinositol", "Phosphatidylcholine", "Phosphatidylserine", "Cardiolipin", "Sphingomyelin"], 0, 8, [8], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0134"], ["Which lipid is located in the inner mitochondrial membrane and is important for electron transport and apoptosis signaling?", ["Cardiolipin", "Phosphatidylcholine", "Phosphatidylserine", "Phosphatidylethanolamine", "Sphingomyelin"], 0, 8, [8], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0135"], ["Which sphingolipid is abundant in myelin and essential for nerve conduction?", ["Sphingomyelin", "Cardiolipin", "Phosphatidylinositol", "Phosphatidylserine", "Phosphatidylethanolamine"], 0, 8, [8], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0136"], ["Which description identifies a peripheral membrane protein?", ["Located on the inner or outer membrane surface", "Embedded across the full bilayer by definition", "Located only within the nucleus", "Made entirely of phospholipids", "Always an ATP-driven pump"], 0, 10, [10], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0139"], ["Which description identifies integral membrane proteins?", ["Embedded in or spanning the lipid bilayer", "Restricted to the outer surface with no membrane embedding", "Restricted to the inner surface with no membrane embedding", "Always free in the cytosol", "Composed only of cholesterol"], 0, 10, [10], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0140"], ["What does the fluid mosaic model describe?", ["A fluid phospholipid bilayer containing proteins and cholesterol", "A rigid protein wall lacking lipids", "A single layer of hydrophobic heads", "A glycogen shell around the cell", "A membrane composed only of transport pumps"], 0, 11, [11], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0141"], ["Which transport mechanism moves substances directly through the lipid bilayer down a concentration gradient?", ["Simple diffusion", "Facilitated diffusion", "Active transport", "Sodium-potassium pumping", "G-protein signaling"], 0, 12, [12], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0142"], ["Which mechanism uses a channel or carrier but no energy to move down a concentration gradient?", ["Facilitated diffusion", "Simple diffusion", "Active transport", "ATP hydrolysis by a pump", "Intracellular gene transcription"], 0, 12, [12], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0143"], ["What is meant by a gated membrane channel?", ["Its opening and closing can be regulated", "It always transports against a gradient", "It never uses a protein", "It converts ATP into glucose", "It is a receptor located only in the nucleus"], 0, 12, [12], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0145"], ["For each ATP used, what does the sodium-potassium ATPase transport?", ["3 sodium ions out and 2 potassium ions in", "2 sodium ions out and 3 potassium ions in", "3 sodium ions in and 2 potassium ions out", "2 sodium ions in and 2 potassium ions out", "1 sodium ion out and 1 potassium ion in"], 0, 13, [13], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0146"], ["Which ion distribution does the sodium-potassium ATPase establish?", ["High sodium outside and high potassium inside", "High sodium inside and high potassium outside", "High levels of both ions only outside", "High levels of both ions only inside", "Equal concentrations of both ions on each side"], 0, 13, [13], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0147"], ["Which set of functions depends on the gradient maintained by the sodium-potassium ATPase?", ["Nerve impulses, nutrient transport, and cell-volume maintenance", "Only steroid hormone synthesis", "Only glycogen branching", "Only DNA replication", "Only extracellular protein digestion"], 0, 13, [13], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0148"], ["Which suffix helps identify some calcium channel blockers?", ["-dipine", "-tidine", "-prazole", "-kinase", "-phosphatase"], 0, 15, [15], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0150"], ["How does cimetidine decrease gastric acid secretion?", ["Competitively inhibits H2 receptors on gastric parietal cells", "Irreversibly inhibits the hydrogen-potassium ATPase", "Blocks calcium entry into vascular smooth muscle", "Activates gastric H2 receptors", "Stimulates adenylyl cyclase directly"], 0, 16, [16], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0151"], ["How does omeprazole decrease gastric acid secretion?", ["Irreversibly inhibits hydrogen-potassium ATPase in parietal cells", "Competitively inhibits H2 receptors", "Activates calcium channels in smooth muscle", "Activates phospholipase C", "Increases cyclic AMP through a Gs receptor"], 0, 16, [16], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0152"], ["Which drug-class suffix pairing is correct?", ["-tidine: H2 blocker; -prazole: proton pump inhibitor", "-tidine: proton pump inhibitor; -prazole: calcium channel blocker", "-dipine: H2 blocker; -tidine: calcium channel blocker", "-prazole: H2 blocker; -dipine: proton pump inhibitor", "-tidine: steroid receptor; -prazole: G protein"], 0, 16, [16], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0153"], ["Which sequence correctly describes cell signaling?", ["Reception, transduction, response", "Response, reception, transduction", "Transduction, response, reception", "Translation, digestion, diffusion", "Diffusion, glycogenesis, transcription"], 0, 18, [18], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0154"], ["What occurs during signal transduction?", ["An activated receptor initiates intracellular signaling events", "A ligand is synthesized as the final cellular response", "The cell membrane loses all receptors", "Every signal enters the nucleus directly", "A receptor remains inactive after ligand binding"], 0, 18, [18], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0155"], ["Which is an example of a cellular response listed in the slides?", ["A change in enzyme activity, cytoskeleton, or gene expression", "Mandatory removal of all membrane proteins", "Conversion of every ligand into ATP", "Loss of all concentration gradients", "Exclusive production of glycogen in every cell"], 0, 18, [18], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0156"], ["Which form of signaling acts on nearby cells?", ["Paracrine", "Autocrine", "Endocrine", "Cell-cell contact", "Intracellular receptor binding"], 0, 19, [19], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0157"], ["Which form of signaling acts on the same cell that releases the signal?", ["Autocrine", "Paracrine", "Endocrine", "Cell-cell contact", "Simple diffusion"], 0, 19, [19], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0158"], ["Which form of signaling reaches distant cells through the bloodstream?", ["Endocrine", "Paracrine", "Autocrine", "Cell-cell contact", "Facilitated diffusion"], 0, 19, [19], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0159"], ["Which form of signaling requires direct contact between cells?", ["Cell-cell contact", "Endocrine", "Paracrine", "Autocrine", "Intracellular steroid signaling"], 0, 19, [19], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0160"], ["Which ligands are examples for intracellular receptors?", ["Steroid and thyroid hormones", "Only ligands unable to cross membranes", "Only extracellular sodium ions", "Only glycogen molecules", "Only membrane phospholipids"], 0, 20, [20], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0161"], ["What binds DNA to regulate transcription in steroid signaling?", ["The hormone-receptor complex", "The hormone alone without a receptor", "The inactive GDP-bound G protein", "Adenylyl cyclase", "Membrane cholesterol"], 0, 21, [21], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0163"], ["Cell-surface receptors are described as which type of protein?", ["Integral membrane proteins", "Only peripheral nuclear proteins", "Only soluble plasma proteins", "Only extracellular enzymes", "Only cytoskeletal proteins"], 0, 22, [22], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0164"], ["Which ligands generally use cell-surface receptors?", ["Ligands that cannot readily cross the membrane", "Only lipid-soluble steroids", "Only thyroid hormones", "Only ligands already bound to DNA", "Only intracellular glycogen"], 0, 20, [20, 22], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0165"], ["What are the subunits of a heterotrimeric G protein?", ["Alpha, beta, and gamma", "Alpha, delta, and epsilon", "Beta, calcium, and phosphate", "Receptor, enzyme, and DNA", "ATP, ADP, and AMP"], 0, 23, [23], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0166"], ["Which nucleotide state activates the G-alpha subunit?", ["GTP-bound", "GDP-bound", "ATP-bound", "AMP-bound", "cAMP-bound"], 0, 23, [23, 30], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0167"], ["What follows ligand binding to a G-protein-coupled receptor?", ["Receptor shape changes and GDP on G-alpha is replaced by GTP", "GTP is replaced by ATP on the ligand", "The receptor enters the nucleus with glycogen", "The G protein loses all nucleotide binding", "DNA replaces GDP on G-alpha"], 0, 23, [23, 26, 27, 28, 29], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0168"], ["How is G-alpha switched off?", ["GTP is converted back to GDP", "GDP is converted to cAMP", "ATP binds to DNA", "Calcium replaces the alpha subunit", "DAG binds to the receptor's ligand site"], 0, 30, [30], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0169"], ["Which sequence links a G-protein-coupled receptor signal to a response?", ["Receptor, G protein, effector enzyme, second messenger, response", "Second messenger, DNA, receptor, ligand, G protein", "Effector enzyme, receptor, glycogen, steroid, response", "G protein, ATP pump, phospholipid, nucleus, ligand", "Receptor, second messenger, ligand synthesis, extracellular response only"], 0, 24, [24], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0171"], ["What is the overall effect of Gs signaling?", ["Increased adenylyl cyclase activity, cAMP, and protein kinase A activity", "Decreased adenylyl cyclase activity, cAMP, and protein kinase A activity", "Increased phospholipase C with only IP3 and DAG production", "Direct activation of an intracellular steroid receptor", "Inhibition of every protein kinase"], 0, 31, [31, 43], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0172"], ["What is the overall effect of Gi signaling?", ["Decreased adenylyl cyclase activity, cAMP, and protein kinase A activity", "Increased adenylyl cyclase activity, cAMP, and protein kinase A activity", "Direct conversion of PIP2 to IP3 and DAG", "Direct activation of protein kinase C through calcium", "Steroid receptor binding to DNA"], 0, 31, [31, 52], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0173"], ["Which effector pathway is associated with Gq?", ["Phospholipase C, IP3 and DAG, calcium and protein kinase C", "Adenylyl cyclase, cAMP, and protein kinase A only", "Inhibition of adenylyl cyclase and reduced protein kinase A only", "Intracellular steroid receptor binding to DNA", "Sodium-potassium ATPase and glycogen synthase"], 0, 31, [31, 58], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0174"], ["Which receptor set is coupled to Gs in the slide table?", ["D1, H2, V2, beta-1, and beta-2", "M2, alpha-2, and D2", "H1, alpha-1, V1, M1, and M3", "D2, V1, M3, and alpha-2", "H1, H2, M2, and D2 only"], 0, 31, [31], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0175"], ["Which receptor set is coupled to Gi in the slide table?", ["M2, alpha-2, and D2", "D1, H2, and V2", "H1, alpha-1, and V1", "M1, M3, and beta-2", "Beta-1, beta-2, and D1"], 0, 31, [31], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0176"], ["Which receptor set is coupled to Gq in the slide table?", ["H1, alpha-1, V1, M1, and M3", "D1, H2, V2, beta-1, and beta-2", "M2, alpha-2, and D2", "D1, D2, beta-1, and M2", "H2, V2, alpha-2, and beta-2"], 0, 31, [31], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0177"], ["Which ligand is paired with M1, M2, and M3 receptors in the slides?", ["Acetylcholine", "Histamine", "Dopamine", "Antidiuretic hormone", "Epinephrine"], 0, 31, [31], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0181"], ["After G-alpha-s binds GTP and separates from beta-gamma, what does it activate?", ["Adenylyl cyclase", "Phospholipase C", "Protein kinase C directly", "An intracellular steroid receptor", "Lysosomal acid alpha-glucosidase"], 0, 37, [37, 38, 39], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0183"], ["Which second messenger activates protein kinase A in Gs signaling?", ["Cyclic adenosine monophosphate (cAMP)", "Inositol trisphosphate (IP3)", "Diacylglycerol (DAG)", "Calcium alone", "Phosphatidylinositol bisphosphate (PIP2)"], 0, 40, [40, 41], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0184"], ["How does activated protein kinase A produce downstream effects?", ["Phosphorylates target proteins", "Directly converts PIP2 to IP3 and DAG", "Carries the extracellular ligand across the membrane", "Turns glucose into a receptor", "Converts every GTP molecule to ATP"], 0, 42, [42], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0185"], ["What does phospholipase C cleave to produce IP3 and DAG?", ["Phosphatidylinositol 4,5-bisphosphate (PIP2)", "Cyclic adenosine monophosphate (cAMP)", "Adenosine triphosphate (ATP)", "Cholesterol", "Phosphatidylserine"], 0, 58, [58], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0189"], ["What is the effect of inositol 1,4,5-trisphosphate (IP3)?", ["Releases calcium from the endoplasmic reticulum", "Directly activates adenylyl cyclase", "Decreases all intracellular calcium", "Carries glucose into muscle", "Phosphorylates DNA directly"], 0, 58, [58], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0190"], ["Which combination activates protein kinase C in the Gq pathway?", ["Diacylglycerol and calcium", "cAMP and protein kinase A", "GDP and adenylyl cyclase", "Cholesterol and phosphatidylserine", "Glucose and insulin alone"], 0, 58, [58], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0191"], ["What is the downstream action of protein kinase C?", ["Phosphorylation of target proteins", "Hydrolysis of glycogen to glucose-1-phosphate", "Conversion of ATP directly into IP3", "Transport of steroid hormones into the nucleus", "Cleavage of membrane proteins into amino acids"], 0, 58, [58], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0192"], ["What is a second messenger?", ["An intracellular molecule or ion that carries and amplifies a signal", "The original extracellular ligand in every pathway", "A receptor's extracellular binding site", "A membrane phospholipid that never changes", "A hormone-receptor complex bound to DNA only"], 0, 62, [62], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0194"], ["Which set consists of second messengers discussed in these slides?", ["cAMP, IP3, DAG, and calcium", "Gs, Gi, Gq, and the receptor", "Adenylyl cyclase, phospholipase C, PKA, and PKC", "Insulin, epinephrine, histamine, and dopamine", "Cholesterol, glycogen, glucose, and pyruvate"], 0, 62, [62], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0195"], ["What effector enzyme is activated by Gs?", ["Protein kinase C", "Phospholipase C", "Adenylyl cyclase", "Glycogen phosphorylase", "ATP synthase"], 2, 53, [53, 54], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0205"], ["What effector enzyme is activated by Gq?", ["Adenylyl cyclase", "Phospholipase C", "Protein kinase A", "Protein kinase C", "Protein phosphatase"], 1, 59, [59, 60], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0206"], ["Activation of Gi has what effect on intracellular cAMP?", ["It increases cAMP", "It decreases cAMP", "It converts cAMP to IP3", "It has no effect on cAMP", "It causes cAMP to leave the cell"], 1, 65, [65, 66], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0208"]], "Slides-Second": [["Insulin binds to a receptor on skeletal muscle. Which change promotes glucose uptake?", ["GLUT4 transporters move to the cell membrane", "GLUT4 transporters leave the cell membrane", "The receptor converts glucose to glycogen directly", "Glucose enters through an intracellular steroid receptor", "Insulin becomes an ion channel"], 0, 4, [4, 5], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0126"], ["A phospholipid moves from the inner to the outer leaflet as a signal of apoptosis. Which is it?", ["Phosphatidylserine", "Phosphatidylcholine", "Phosphatidylethanolamine", "Cardiolipin", "Sphingomyelin"], 0, 8, [8], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0133"], ["At higher temperatures, how does cholesterol affect membrane fluidity?", ["Limits phospholipid movement and decreases fluidity", "Promotes phospholipid movement and increases fluidity", "Removes all integral proteins", "Converts the bilayer to a single leaflet", "Opens every ion channel"], 0, 9, [9], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0137"], ["At lower temperatures, how does cholesterol help the membrane?", ["Prevents tight packing and helps maintain fluidity", "Promotes tight packing and eliminates fluidity", "Removes the hydrophilic heads", "Converts phospholipids into glycogen", "Blocks all membrane signaling"], 0, 9, [9], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0138"], ["A substance moves against its concentration gradient through a pump. Which requirement distinguishes this process?", ["Energy is required", "No protein is involved", "The substance must be a steroid", "The movement must be toward lower concentration", "The membrane must lose its bilayer"], 0, 12, [12], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0144"], ["Blocking calcium entry into vascular smooth muscle produces which effect?", ["Relaxation, vasodilation, and decreased blood pressure", "Contraction, vasoconstriction, and increased blood pressure", "Increased gastric acid secretion", "Direct stimulation of glycogen synthase", "Increased intracellular calcium release through IP3"], 0, 15, [15], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0149"], ["A lipid-soluble steroid hormone reaches its target cell. Which sequence follows?", ["Diffusion across membrane, intracellular receptor binding, altered gene transcription", "Binding GLUT4, glucose transport, glycogen cleavage", "Binding a G protein directly, cAMP release into blood, DNA breakdown", "Opening a sodium pump, calcium export, protein digestion", "Binding only an extracellular receptor without entering the cell"], 0, 20, [20, 21], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0162"], ["Epinephrine stays outside the cell yet produces an intracellular response. How is this possible?", ["A membrane receptor relays the signal through a G protein and effector enzyme", "Epinephrine must become a steroid before signaling", "Epinephrine diffuses into the nucleus and binds DNA directly", "Glucose transporters carry epinephrine into mitochondria", "The extracellular ligand itself becomes cAMP"], 0, 24, [24], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0170"], ["Histamine binds H1 rather than H2. Which signaling pathway is expected?", ["Gq activation with phospholipase C signaling", "Gi inhibition of adenylyl cyclase", "Gs activation of adenylyl cyclase", "Intracellular steroid receptor signaling", "Direct sodium-potassium pumping"], 0, 31, [31], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0178"], ["Antidiuretic hormone binds a V1 receptor. Which effector enzyme is activated?", ["Phospholipase C", "Adenylyl cyclase", "Protein kinase A", "Glycogen synthase", "Hydrogen-potassium ATPase"], 0, 31, [31, 58], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0179"], ["Antidiuretic hormone binds a V2 receptor. Which G protein is coupled to that receptor?", ["Gs", "Gi", "Gq", "G12", "No G protein; it is an intracellular receptor"], 0, 31, [31], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0180"], ["Dopamine activates D2 rather than D1. Which effect is expected?", ["Gi-mediated inhibition of adenylyl cyclase", "Gs-mediated stimulation of adenylyl cyclase", "Gq-mediated activation of phospholipase C", "Direct activation of a steroid receptor", "Direct movement of GLUT4 independent of a receptor"], 0, 31, [31], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0182"], ["A Gi-coupled receptor becomes active. What happens to target-protein phosphorylation through the cAMP pathway?", ["It decreases as protein kinase A activity decreases", "It increases as protein kinase A activity increases", "It increases because Gi activates phospholipase C", "It becomes independent of kinase activity", "It requires steroid receptor binding to DNA"], 0, 48, [48, 49, 50, 51], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0186"], ["Which pair illustrates opposite cardiac signaling effects shown on the comparison slide?", ["Beta-1/Gs increases heart activity; M2/Gi decreases heart activity", "Beta-1/Gi decreases heart activity; M2/Gs increases heart activity", "Both beta-1 and M2 activate Gq", "Both beta-1 and M2 inhibit adenylyl cyclase", "Both are intracellular steroid receptors"], 0, 55, [55], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0187"], ["How does epinephrine promote glycogen breakdown through Gs signaling?", ["cAMP activates protein kinase A, promoting glycogen phosphorylase activation", "cAMP directly activates glycogen synthase", "Gi increases cAMP and blocks glycogen phosphorylase", "The receptor converts glycogen directly into ATP", "Epinephrine binds DNA and removes glycogen from the nucleus"], 0, 57, [57], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0188"], ["The M3 example on the Gq summary slide produces which response?", ["Bronchial smooth muscle contraction", "Decreased heart activity through Gi", "Increased heart activity through Gs", "Gastric acid inhibition by a proton pump inhibitor", "Steroid-induced DNA binding"], 0, 61, [61], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0193"], ["Why can epinephrine activate different intracellular pathways in different target cells?", ["The receptor subtype determines the coupled G protein", "Epinephrine always enters the nucleus first", "The ligand alone fixes one pathway for every receptor", "All adrenergic receptors couple to Gi", "All adrenergic receptors couple to Gq"], 0, 67, [67], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0196"], ["Epinephrine binds alpha-1 instead of alpha-2. Which change in signaling is expected?", ["Gq/PLC signaling rather than Gi inhibition of adenylyl cyclase", "Gi inhibition rather than Gq activation", "Gs activation rather than intracellular steroid signaling", "No change because both couple to Gs", "Direct ATP pumping rather than receptor signaling"], 0, 67, [67], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0197"], ["Epinephrine binds to a β₁ adrenergic receptor. Which G protein is activated?", ["Gs", "Gi", "Gq", "G12", "None; beta-1 is an intracellular receptor"], 0, 63, [63, 64], null, "Biological Membranes & Cell Signaling", null, null, "biochem2-s-0207"]]}};
+const QUESTION_IMAGES = {};
+const MASTER_NAME = "Biochemistry Block 2";
+const MASTER_SLIDE_COUNT = 92;
+const MASTER_MAP={};
+
+const MASTER_STREAK = 3;
+const STORAGE_KEY = "ipapBiochem2CarbCell20260929v1";
+const PROGRAM_NAME = "IPAP Base Adaptive Program — Carb Metabolism & Cell Signaling";
+const BANK_ID = "ipap-biochem2-carb-cell-20260929-v1";
+const SLIDE_OFFSET = {};
+const REVIEW_TOPICS = {};
+const SOURCE_SLIDE_TITLES = {"Carb Metabolism": {"1": "Biochemistry ", "2": "Biochemistry ", "3": "Terminal Learning Objective", "4": "CLO/IOs", "5": "How to Study This Block", "6": "What is the Goal of Carbohydrate Metabolism?", "7": "The Big Picture: Three Stages of Catabolism", "8": "Three Stages of Catabolism: From Food to ATP", "9": "Coenzymes & Cofactors: Roles in Biochemical Metabolic Pathways", "10": "Coenzyme Participate in Reduction/Oxidation (REDOX) Reactions", "11": "The Major Metabolic Coenzymes", "12": "Coenzyme:", "13": "Coenzyme: Nic", "14": "Coenzyme: ", "15": "Coenzyme", "16": "How Metabolic Pathways in Biochemistry Connect ", "17": "How to Learn Every Metabolic Pathway ", "18": "Fed vs Fasting States", "19": "Glycolysis Video", "20": "Glycolysis", "21": "SGLT-1", "22": "Which transporter moves glucose from the intestinal lumen into the enterocyte?", "23": "Which transporter moves glucose from the intestinal lumen into the enterocyte? ", "24": "Metabolic Pathways - Glycolysis", "25": "Glycolytic Pathway ", "26": "Key Regulators of Glycolysis ", "27": "Products of Glycolysis", "28": "Metabolic Pathways - Fructose & Galactose Metabolism", "29": "What is the rate-limiting enzyme of glycolysis?", "30": "What is the rate-limiting enzyme of glycolysis?", "31": "Why is fructose-2,6, bisphosphate a regulator of PFK-1?", "32": "Why is fructose-2,6, bisphosphate a regulator of PFK-1?", "33": "Fructose ", "34": "Conversion of Fructose ", "35": "Fructose Metabolism in Liver", "36": "Fructose Metabolism in Muscle and Kidney", "37": "Condition", "38": "Condition", "39": "Pathway Checklist – FRUCTOSE METABOLISM ", "40": "Galactose Metabolism ", "41": "Condition", "42": "Pathway Checklist – GALACTOSE METABOLISM ", "43": "Condition", "44": "Condition", "45": "A 22-year-old patient develops severe muscle cramps and exercise intolerance during physical activity. Following intense exercise, the patient notices rust-colored urine due to myoglobinuria. Laboratory testing shows no rise in lactate levels after exercise. Which glycolytic disorder is the most likely diagnosis?", "46": "A 22-year-old patient develops severe muscle cramps and exercise intolerance during physical activity. Following intense exercise, the patient notices rust-colored urine due to myoglobinuria. Laboratory testing shows no rise in lactate levels after exercise. Which glycolytic disorder is the most likely diagnosis? ", "47": "Pathway Checklist - GLYCOLYSIS", "48": "Metabolic Pathways - Pentose Phosphate Pathway", "49": "Hexose Monophosphate Shunt (HMS)/Pentose Phosphate Pathway (PPP)", "50": "6-Phosphogluconolactone", "51": "Condition", "52": "58", "53": "58", "54": "Pathway Checklist – PPP/HMP", "55": "What Happens to Pyruvate?", "56": "Where Is the Oxygen in Aerobic Metabolism?", "57": "Pyruvate: ", "58": "Pyruvate to Lactate: ", "59": "Cori Cycle: Lactic Acid Recycling", "60": "Why ", "61": "How RBCs Regenerate NAD⁺", "62": "Type A Lactic Acidosis - Tissue Hypoxia", "63": "Type B Lactic Acidosis - Without Tissue Hypoxia", "64": "Energy Yield of Glycolysis & Pyruvate Oxidation: Aerobic vs. Anaerobic", "65": "Why can liver failure cause Type B lactic acidosis? ", "66": "Why can liver failure cause Type B lactic acidosis? ", "67": "Metabolic Pathways - Glycogenesis & Glycogenolysis", "68": "Glycogen: Energy", "69": "Key Steps of Glycogenesis", "70": "Glycogenesis", "71": "Pathway Checklist – GLYCOGENESIS", "72": "Key Steps of Glycogenolysis", "73": "GLYCOGEN PHOSPHORYLASE", "74": "Pathway Checklist – GLYCOGENOLYSIS", "75": "Match ", "76": "Solution", "77": "Glycogen ", "78": "Gluconeogenesis", "79": "Gluconeogenesis: The Process", "80": "Pyruvate ", "81": "Glycolysis", "82": "Glycolysis vs Gluconeogenesis Regulation", "83": "Pathway Checklist – GLUCONEOGENESIS ", "84": "Learning", "85": "Solution ", "86": "In Hereditary Fructose Intolerance (HFI)", "87": "A patient develops hemolytic anemia after significant oxidative stress. Deficiency of which enzyme should be suspected?", "88": "A patient develops hemolytic anemia after significant oxidative stress. Deficiency of which enzyme should be suspected? ", "89": "Glucose-6-phosphate is the central branch point of carbohydrate metabolism", "90": "A 2-week-old infant develops vomiting, jaundice, hepatomegaly, and cataracts after starting breast milk feeds. Laboratory testing suggests accumulation of a phosphorylated sugar that traps inorganic phosphate within cells. Which of the following disorders is the most likely diagnosis?", "91": "A 2-week-old infant develops vomiting, jaundice, hepatomegaly, and cataracts after starting breast milk feeds. Laboratory testing suggests accumulation of a phosphorylated sugar that traps inorganic phosphate within cells. Which of the following disorders is the most likely diagnosis? ", "92": "Metabolic Reactions "}, "Cell Signaling": {"1": "Biochemistry ", "2": "Terminal Learning Objective", "3": "CLOs/IOs", "4": "How is Cell Signaling Connected to Carbohydrate, Lipid & Protein Metabolism?", "5": "Example of Cell Signaling in Metabolism", "6": "Membrane Phospholipids & Cell Membranes ", "7": "Cell Membrane - Lipid ", "8": "Cell Membrane", "9": "Membrane ", "10": "Peripheral ", "11": "Fluid Mosaic ", "12": "Active transport", "13": "Active Transport - Na", "14": "Membrane ", "15": "Calcium", "16": "Membrane Blockers that ↓ Gastric Acid", "17": "Cell", "18": "       Stage ", "19": "Four Forms ", "20": "Intracellular ", "21": "Intracellular Signaling Example - ", "22": "Cell ", "23": "Cell Surface Signaling: G Protein-", "24": "GPCRs", "25": "How Is the G Protein Turned On?", "26": "How Is the G Protein Turned On?", "27": "How Is the G Protein Turned On?", "28": "How Is the G Protein Turned On?", "29": "How Is the G Protein Turned On?", "30": "How Is the G Protein Turned On?", "31": "GPCRs & Signaling Effects", "32": "Organ Distribution of Gs GPCRs", "33": "Organ Distribution of Gi GPCRs", "34": "Organ Distribution of ", "35": "Mechanism of ", "36": "Mechanism ", "37": "Mechanism ", "38": "Mechanism ", "39": "+", "40": "+", "41": "+", "42": "+", "43": "+", "44": "Mechanism ", "45": "Mechanism ", "46": "Mechanism ", "47": "Mechanism ", "48": "Mechanism ", "49": "Mechanism ", "50": "Mechanism ", "51": "Mechanism ", "52": "Mechanism ", "53": "What effector enzyme is activated by Gs?", "54": "What effector enzyme is activated by Gs? ", "55": "Key Steps of G", "56": "cAMP Mediates Hormonal Stimulation of Glycogenolysis", "57": "How Does Epinephrine Stimulate Glycogenolysis?", "58": "Ligand binds to a ", "59": "What effector enzyme is activated by ", "60": "What effector enzyme is activated by ", "61": "Key Steps of ", "62": "Second", "63": "Epinephrine binds to a ", "64": "Epinephrine binds to a ", "65": "Activation of G", "66": "Activation of G", "67": "One Ligand Can Activate Different GPCR Pathways"}};
+const BANK_BUILD = {"status": "Slide-only; hidden slides excluded from reference numbering", "counts": {"Carb Metabolism": 140, "Cell Signaling": 76}, "total": 216};
+const $ = id => document.getElementById(id);
+
+let active=[], index=0, correct=0, answered=0, missedThisQuiz=[], locked=false, lastSettings=null;
+let savedSession=null, quizInProgress=false, lastSavedAt=null;
+let progress = {};
+let coverage = {};
+let questionEdits = {};
+let customQuestions = [];
+let storageAvailable = true;
+
+function stableId(day,key,idx){ return `${day}|${key}|${idx}`; }
+function slideNumber(day,pdfPage){ return Number(pdfPage); }
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function shuffle(a){
+  a=[...a];
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+function defaultStat(){ return {attempts:0,correct:0,wrong:0,streak:0,everWrong:false,inBank:false,mastered:false,manualRemoved:false,excluded:false,lastResult:null}; }
+function statFor(id){ if(!progress[id]) progress[id]=defaultStat(); return progress[id]; }
+
+function captureSession(){
+  if(!quizInProgress || !active.length) return null;
+  return {
+    active,
+    index,
+    correct,
+    answered,
+    missedIds: missedThisQuiz.map(q=>q.id),
+    locked,
+    lastSettings
+  };
+}
+
+function makeProgressPayload(includeExportTime=false){
+  const payload={
+    version:6,
+    slideReferenceRevision:1,
+    customQuestions,
+    questionEdits,
+    settings:Object.fromEntries(["day","order","source","mode","size"].map(id=>[id,$(id).value])),
+    program:PROGRAM_NAME,
+    bankId:BANK_ID,
+    questionCount:ALL ? ALL.length : null,
+    lastSavedAt:lastSavedAt || new Date().toISOString(),
+    progress,
+    coverage,
+    session:quizInProgress ? captureSession() : savedSession
+  };
+  if(includeExportTime) payload.exportedAt=new Date().toISOString();
+  return payload;
+}
+
+function loadProgress(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(!raw)return;
+    const data=validateIncomingPayload(JSON.parse(raw));
+    customQuestions=data.customQuestions;questionEdits=data.questionEdits;rebuildQuestions();
+    progress=data.progress;coverage=data.coverage;savedSession=data.session;
+    lastSavedAt=data.exportedAt||null;applySettings(data.settings);
+  }catch(e){storageAvailable=false;}
+}
+
+function saveProgress(){
+  if(!storageAvailable) return;
+  try{
+    lastSavedAt=new Date().toISOString();
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(makeProgressPayload(false)));
+    updateStorageStatus();
+  }catch(e){
+    storageAvailable=false;
+    updateStorageStatus();
+  }
+}
+
+function formatSavedTime(iso){
+  if(!iso) return "not yet";
+  try{ return new Date(iso).toLocaleString(); }
+  catch(e){ return iso; }
+}
+
+function updateStorageStatus(){
+  $("storageStatus").textContent = (storageAvailable ? "Auto-save is on for this browser. " : "Auto-save is unavailable in this browser. ") + "Before switching chats or devices, choose Save Progress and keep the downloaded JSON file. Open this program in the new chat, then choose Load Progress and select that file. Your history, custom questions, question edits, settings, and unfinished quiz are included.";
+}
+
+function showResumeSessionPanel(){
+  const panel=$("resumeSessionPanel");
+  if(!panel) return;
+  panel.classList.toggle("hide", !savedSession);
+}
+
+function restoreSavedSession(){
+  if(!savedSession || !Array.isArray(savedSession.active) || !savedSession.active.length){
+    alert("No saved in-progress quiz is available.");
+    return;
+  }
+  active=savedSession.active;
+  index=Math.max(0,Math.min(Number(savedSession.index)||0,active.length-1));
+  correct=Number(savedSession.correct)||0;
+  answered=Number(savedSession.answered)||0;
+  locked=!!savedSession.locked;
+  lastSettings=savedSession.lastSettings || null;
+  const missedIds=new Set(savedSession.missedIds || []);
+  missedThisQuiz=active.filter(q=>missedIds.has(q.id));
+  quizInProgress=true;
+  savedSession=null;
+
+  $("setup").classList.add("hide");
+  $("results").classList.add("hide");
+  $("quiz").classList.remove("hide");
+  render();
+  saveProgress();
+}
+
+async function discardSavedSession(){
+  if(!savedSession) return;
+  if(!await askConfirmation("Discard the saved in-progress quiz? Your lifetime progress, Incorrect Bank, mastery, coverage, and removed questions will remain.")) return;
+  savedSession=null;
+  quizInProgress=false;
+  active=[];
+  saveProgress();
+  showResumeSessionPanel();
+}
+
+function validateIncomingPayload(parsed){
+  if(!parsed || typeof parsed!=="object") throw new Error("Invalid progress data.");
+  if(parsed.bankId!==BANK_ID){
+    throw new Error("This progress file belongs to a different question bank.");
+  }
+  const incomingCustom=validateCustomQuestions(parsed.customQuestions||[]);
+  const availableQuestions=[...allQuestionObjects(),...incomingCustom];
+  const incoming=parsed.progress || parsed.questions || parsed;
+  if(!incoming || typeof incoming!=="object") throw new Error("Invalid progress data.");
+  if(Array.isArray(incoming) || Object.entries(incoming).some(([id,s])=>!availableQuestions.some(q=>q.id===id) || !s || typeof s!=="object" || ["attempts","correct","wrong"].some(k=>s[k]!==undefined && (!Number.isFinite(s[k]) || s[k]<0)))) throw new Error("Invalid progress data.");
+  if(!parsed.progress && !parsed.questions && !Object.keys(incoming).length) throw new Error("This file does not contain study progress.");
+  if(parsed.session && (!Array.isArray(parsed.session.active) || parsed.session.active.some(q=>!q || !availableQuestions.some(x=>x.id===q.id) || !Array.isArray(q.choices) || !q.choices.length))) throw new Error("Invalid saved quiz.");
+  return {
+    customQuestions:incomingCustom,
+    questionEdits:validateEdits(parsed.questionEdits || {},availableQuestions),
+    settings:parsed.settings,
+    progress:incoming,
+    coverage:(parsed.coverage && typeof parsed.coverage==="object") ? parsed.coverage : {},
+    session:(parsed.session && typeof parsed.session==="object") ? parsed.session : null,
+    exportedAt:parsed.exportedAt || parsed.lastSavedAt || null
+  };
+}
+
+async function applyImportedPayload(parsed,sourceLabel="transfer"){
+  const data=validateIncomingPayload(parsed);
+  const when=data.exportedAt ? `\nSaved: ${formatSavedTime(data.exportedAt)}` : "";
+  if(!await askConfirmation(`Load this ${sourceLabel} and replace current progress, custom questions, and question edits?${when}`)) return false;
+
+  customQuestions=data.customQuestions; questionEdits=data.questionEdits; rebuildQuestions(); applySettings(data.settings);
+  $("quiz").classList.add("hide"); $("results").classList.add("hide"); $("setup").classList.remove("hide");
+  progress=data.progress;
+  coverage=data.coverage;
+  savedSession=data.session;
+  quizInProgress=false;
+  active=[];
+  index=0; correct=0; answered=0; missedThisQuiz=[]; locked=false; lastSettings=null;
+
+  saveProgress();
+  updateLifetimeUI();
+  updateCoverageStatus();
+  showResumeSessionPanel();
+  return true;
+}
+
+function allQuestionObjects(){
+  const out=[];
+  for(const [day,sets] of Object.entries(BANK)){
+    for(const [key,qs] of Object.entries(sets)){
+      const [quiz,order]=key.split("-");
+      qs.forEach((row,idx)=>{
+        out.push({id:row[9]||stableId(day,key,idx),day,quiz,order,q:row[0],o:row[1],a:row[2],imageKey:row[5]||null,sourceDeck:row[6]||day,review:row[7]||null,page:Number(row[3]),slides:row[4]||[Number(row[3])]});
+      });
+    }
+  }
+  return out;
+}
+const ALL = allQuestionObjects();
+
+function bankQuestions(filterDay="All",filterOrder="Mixed",filterSource="Random"){
+  return ALL.filter(q=>{
+    const s=statFor(q.id);
+    return !s.excluded && s.inBank &&
+      (filterDay==="All" || q.day===filterDay) &&
+      (filterOrder==="Mixed" || q.order===filterOrder) &&
+      (filterSource==="Random" || q.quiz===filterSource);
+  });
+}
+function flattenPool(day,order,source){
+  return ALL.filter(q=>{
+    const s=statFor(q.id);
+    return !s.excluded &&
+      (day==="All" || q.day===day) &&
+      (order==="Mixed" || q.order===order) &&
+      (source==="Random" || q.quiz===source);
+  });
+}
+
+function coverageKey(settings){
+  return `${settings.day}|${settings.order}|${settings.source}`;
+}
+function coverageState(settings){
+  const key=coverageKey(settings);
+  if(!coverage[key]) coverage[key]={cycle:1,seen:{}};
+  if(!coverage[key].seen || typeof coverage[key].seen!=="object") coverage[key].seen={};
+  if(!coverage[key].cycle) coverage[key].cycle=1;
+  return coverage[key];
+}
+function normalizeCoverage(settings,base,allowReset=true){
+  const c=coverageState(settings);
+  const eligible=new Set(base.map(q=>q.id));
+  for(const id of Object.keys(c.seen)){
+    if(!eligible.has(id)) delete c.seen[id];
+  }
+  if(allowReset && base.length && base.every(q=>c.seen[q.id])){
+    c.cycle++;
+    c.seen={};
+    saveProgress();
+  }
+  return c;
+}
+function markCoverageSeen(item){
+  if(!lastSettings) return;
+  const base=flattenPool(lastSettings.day,lastSettings.order,lastSettings.source);
+  if(!base.some(q=>q.id===item.id)) return;
+  const c=normalizeCoverage(lastSettings,base,false);
+  c.seen[item.id]=true;
+  saveProgress();
+  updateCoverageStatus();
+}
+function updateCoverageStatus(){
+  if(!$("coverageStatus")) return;
+  const settings={
+    day:$("day").value,
+    order:$("order").value,
+    source:$("source").value
+  };
+  const base=flattenPool(settings.day,settings.order,settings.source);
+  const c=normalizeCoverage(settings,base,false);
+  const seen=base.filter(q=>c.seen[q.id]).length;
+  $("coverageStatus").textContent =
+    `Coverage cycle ${c.cycle}: ${seen} of ${base.length} unique questions have been shown. ` +
+    `Correct non-bank questions stay out of rotation until this reaches ${base.length} of ${base.length}.`;
+}
+
+function weightedSampleWithoutReplacement(items,count,weightFn){
+  const remaining=[...items], picked=[];
+  while(picked.length<count && remaining.length){
+    const weights=remaining.map(x=>Math.max(0.01,Number(weightFn(x))||0.01));
+    const total=weights.reduce((a,b)=>a+b,0);
+    let r=Math.random()*total, idx=0;
+    for(;idx<weights.length;idx++){ r-=weights[idx]; if(r<=0) break; }
+    if(idx>=remaining.length) idx=remaining.length-1;
+    picked.push(remaining.splice(idx,1)[0]);
+  }
+  return picked;
+}
+
+function adaptiveWeight(q){
+  const s=statFor(q.id);
+  if(s.inBank){
+    if(s.streak===0) return 10;
+    if(s.streak===1) return 7;
+    return 4;
+  }
+  if(s.attempts===0) return 2.2;
+  if(s.mastered) return 0.8;
+  return 1.2;
+}
+
+function buildQuiz(settings){
+  const base=flattenPool(settings.day,settings.order,settings.source);
+  const c=normalizeCoverage(settings,base,true);
+  const unseen=base.filter(q=>!c.seen[q.id]);
+
+  if(settings.mode==="Incorrect"){
+    const b=bankQuestions(settings.day,settings.order,settings.source);
+    return shuffle(b).slice(0,Math.min(settings.size,b.length));
+  }
+
+  if(settings.mode==="Unseen"){
+    // Literal current-cycle view: do not auto-reset the cycle here.
+    // Only questions not yet shown in the current coverage cycle are eligible.
+    const current=normalizeCoverage(settings,base,false);
+    const notAsked=base.filter(q=>!current.seen[q.id]);
+    return shuffle(notAsked).slice(0,Math.min(settings.size,notAsked.length));
+  }
+
+  if(settings.mode==="Random"){
+    // Coverage-first randomization: exhaust unseen questions before recycling clean-correct ones.
+    const first=shuffle(unseen).slice(0,Math.min(settings.size,unseen.length));
+    if(first.length>=settings.size) return first;
+    const firstIds=new Set(first.map(q=>q.id));
+    const remainder=shuffle(base.filter(q=>!firstIds.has(q.id))).slice(0,settings.size-first.length);
+    return [...first,...remainder];
+  }
+
+  // Adaptive:
+  // Active Incorrect Bank questions are the deliberate exception to the no-recycle rule.
+  // They can repeat before full coverage so the learner can build a 3-correct streak.
+  const b=bankQuestions(settings.day,settings.order,settings.source);
+  const desiredBank=Math.min(b.length,Math.ceil(settings.size*0.55));
+  const bankPick=weightedSampleWithoutReplacement(b,desiredBank,q=>{
+    const s=statFor(q.id);
+    return s.streak===0 ? 10 : s.streak===1 ? 7 : 4;
+  });
+
+  const pickedIds=new Set(bankPick.map(q=>q.id));
+  const remainingSlots=settings.size-bankPick.length;
+
+  // For every non-bank slot, use unseen questions first.
+  const unseenNonPicked=unseen.filter(q=>!pickedIds.has(q.id));
+  const coveragePick=shuffle(unseenNonPicked).slice(0,Math.min(remainingSlots,unseenNonPicked.length));
+  coveragePick.forEach(q=>pickedIds.add(q.id));
+
+  const stillNeeded=remainingSlots-coveragePick.length;
+  let fill=[];
+  if(stillNeeded>0){
+    const restPool=base.filter(q=>!pickedIds.has(q.id));
+    fill=weightedSampleWithoutReplacement(restPool,stillNeeded,adaptiveWeight);
+  }
+
+  return shuffle([...bankPick,...coveragePick,...fill]);
+}
+
+function prepareQuestion(raw){
+  const pairs=raw.o.map((txt,i)=>({txt,correct:i===raw.a}));
+  const mixed=raw.day==='Exam 2 Self-Assessment'?pairs:shuffle(pairs);
+  return {
+    ...raw,
+    choices:mixed,
+    answer:mixed.findIndex(x=>x.correct),
+    answered:false,
+    selected:null,
+    wasCorrect:null
+  };
+}
+
+function sourceLabel(q){
+  const original=ALL.find(x=>x.id===q.id)||q;
+  const refs=sourceSlidesFor(original);
+  const deck=original.sourceDeck||MASTER_NAME;
+  return refs.length?`${deck} · slide${refs.length===1?'':'s'} ${refs.map(r=>r.number).join(', ')}`:`${original.day} · custom question`;
+}
+
+function topicForQuestion(q){
+  const slide=sourceSlidesFor(q)[0]?.number||0;
+  return {start:slide,end:slide,name:q.day==='Exam pictures'?`${MASTER_NAME} · picture labels`:(SOURCE_SLIDE_TITLES[q.day]||{})[slide]||'Review your custom question'};
+}
+
+function recommendationData(){
+  const groups=new Map();
+  for(const q of ALL){
+    const s=statFor(q.id);
+    if(s.excluded || !s.inBank || ($("day").value!=="All" && q.day!==$("day").value)) continue;
+    const topic=topicForQuestion(q);
+    const key=`${q.day}|${topic.start}|${topic.end}|${topic.name}`;
+    if(!groups.has(key)){
+      groups.set(key,{
+        day:q.day,deck:q.sourceDeck,start:topic.start,end:topic.end,name:topic.name,
+        questions:0,wrong:0,streakSum:0,zeroStreak:0,ids:[]
+      });
+    }
+    const g=groups.get(key);
+    g.questions++;
+    g.wrong += s.wrong || 0;
+    g.streakSum += s.streak || 0;
+    if((s.streak||0)===0) g.zeroStreak++;
+    g.ids.push(q.id);
+  }
+  return [...groups.values()].sort((a,b)=>{
+    const scoreA=(a.questions*4)+(a.zeroStreak*2)+a.wrong-(a.streakSum*0.5);
+    const scoreB=(b.questions*4)+(b.zeroStreak*2)+b.wrong-(b.streakSum*0.5);
+    return scoreB-scoreA || b.questions-a.questions;
+  });
+}
+
+function renderReviewRecommendations(){
+  const holder=$("reviewRecommendations");
+  if(!holder) return;
+  const recs=recommendationData();
+  if(!recs.length){
+    holder.innerHTML='<p style="margin:10px 0 0"><strong>No targeted review areas right now.</strong> Your Incorrect Bank is empty.</p>';
+    return;
+  }
+
+  const top=recs.slice(0,6);
+  holder.innerHTML=top.map((g,idx)=>{
+    const avg=(g.streakSum/g.questions).toFixed(1);
+    const unit=g.day==='Exam 2 Pictures'?'page':'slide';
+    const range=g.start===0?"your custom question":(g.start===g.end ? `${unit} ${g.start}` : `${unit}s ${g.start}–${g.end}`);
+    let priority="Review";
+    if(idx===0 || g.questions>=4 || g.zeroStreak>=3) priority="Highest priority";
+    else if(idx<=2 || g.questions>=2) priority="Priority";
+    return `<article class="bank-item">
+      <strong>${idx+1}. ${escapeHtml(g.day)} — ${escapeHtml(g.name)}</strong><br>
+      <span class="pill">${priority}</span>
+      <span class="pill">${range}</span>
+      <span class="pill">${g.questions} active bank question${g.questions===1?"":"s"}</span>
+      <br><span class="small">Recommendation: go back through ${range}. Your current bank has ${g.questions} question${g.questions===1?"":"s"} tied to this area; ${g.zeroStreak} currently have a 0/${MASTER_STREAK} mastery streak.</span>
+    </article>`;
+  }).join("");
+}
+
+function updateLifetimeUI(){
+  const day=$("day").value;
+  $("statsScope").textContent=`Historical statistics — ${day === "All" ? "All sections" : day}`;
+  const vals=ALL.filter(q=>day==="All" || q.day===day).map(q=>statFor(q.id));
+  const bank=vals.filter(s=>s.inBank).length;
+  const mastered=vals.filter(s=>s.mastered).length;
+  const attempts=vals.reduce((n,s)=>n+(s.attempts||0),0);
+  const corr=vals.reduce((n,s)=>n+(s.correct||0),0);
+  $("bankCount").textContent=bank;
+  $("masteredCount").textContent=mastered;
+  $("attemptCount").textContent=attempts;
+  $("accuracy").textContent=attempts ? Math.round(corr/attempts*100)+"%" : "—";
+  renderBankList();
+  renderRemovedList();
+  renderReviewRecommendations();
+}
+
+function renderBankList(){
+  const rows=ALL.filter(q=>statFor(q.id).inBank && !statFor(q.id).excluded)
+    .sort((a,b)=>statFor(a.id).streak-statFor(b.id).streak || b.day.localeCompare(a.day));
+  const holder=$("bankList");
+  if(!rows.length){
+    holder.innerHTML="<p>Your Incorrect Bank is empty. Missed questions will appear here automatically.</p>";
+    return;
+  }
+  holder.innerHTML=rows.slice(0,100).map(q=>{
+    const s=statFor(q.id), slide=slideNumber(q.day,q.page);
+    const answer=escapeHtml(q.o[q.a]);
+    return `<div class="bank-item">
+      <button type="button" class="secondary bank-question-toggle" data-toggle-answer="${escapeHtml(q.id)}" style="width:100%;text-align:left;margin:0;padding:0;border:none;background:transparent;color:inherit;min-height:0">
+        <strong>${escapeHtml(q.q)}</strong>
+      </button>
+      <div class="small" style="margin-top:4px">Click the question to show/hide the answer.</div>
+      <div id="bank-answer-${escapeHtml(q.id)}" class="hide" style="margin-top:8px;padding:10px;border:1px solid var(--border);border-radius:8px">
+        <strong>Answer:</strong> ${answer}<br>
+        <span class="small">Source: ${escapeHtml(sourceLabel(q))}</span>${sourceButton(q)}
+      </div>
+      <div style="margin-top:7px">
+        <span class="pill">${q.day}</span><span class="pill">${q.order} order</span>
+        <span class="pill">Slide ${slide}</span><span class="pill">Correct streak ${s.streak}/${MASTER_STREAK}</span>
+      </div>
+      <button type="button" class="bank-remove" data-remove-bank="${escapeHtml(q.id)}">Remove from Incorrect Bank</button>
+      <div class="small" style="margin-top:5px">If you miss this question again later, it will automatically return to the Incorrect Bank.</div>
+    </div>`;
+  }).join("") + (rows.length>100 ? `<p>Showing 100 of ${rows.length} bank questions.</p>` : "");
+}
+
+function renderRemovedList(){
+  const rows=ALL.filter(q=>statFor(q.id).excluded);
+  const holder=$("removedList");
+  if(!holder) return;
+  if(!rows.length){
+    holder.innerHTML="<p>No questions have been removed from the test bank.</p>";
+    return;
+  }
+  holder.innerHTML=rows.map(q=>{
+    const slide=slideNumber(q.day,q.page);
+    return `<div class="bank-item">
+      <strong>${escapeHtml(q.q)}</strong><br>
+      <span class="pill">${q.day}</span>
+      <span class="pill">${q.order} order</span>
+      <span class="pill">Slide ${slide}</span><br>
+      <button type="button" class="secondary bank-remove" data-restore-question="${escapeHtml(q.id)}" style="color:var(--text);border-color:var(--border)">Restore to Test Bank</button>
+    </div>`;
+  }).join("");
+}
+
+
+function startQuiz(custom=null, forcedMode=null){
+  let settings;
+  if(custom){
+    settings=lastSettings || {day:"All",order:"Mixed",source:"Random",size:custom.length,mode:"Adaptive"};
+  }else{
+    settings={
+      day:$("day").value,
+      order:$("order").value,
+      source:$("source").value,
+      size:Number($("size").value),
+      mode:forcedMode || $("mode").value
+    };
+  }
+  lastSettings=settings;
+
+  let pool=custom || buildQuiz(settings);
+  if(!pool.length){
+    if(settings.mode==="Incorrect"){
+      alert("Your Incorrect Bank is empty for those filters.");
+    }else if(settings.mode==="Unseen"){
+      alert("There are no unasked questions left in the current coverage cycle for those filters.");
+    }else{
+      alert("That combination has no questions.");
+    }
+    return;
+  }
+  active=pool.map(prepareQuestion);
+  index=0; correct=0; answered=0; missedThisQuiz=[]; locked=false;
+  quizInProgress=true;
+  savedSession=null;
+  $("setup").classList.add("hide"); $("results").classList.add("hide"); $("quiz").classList.remove("hide");
+  render();
+  saveProgress();
+}
+
+function render(){
+  const item=active[index];
+  if(!item){ finish(); return; }
+
+  markCoverageSeen(item);
+  locked=item.answered;
+
+  $("counter").textContent=`Question ${index+1} of ${active.length}`;
+  $("scoreline").textContent=`Score: ${correct} / ${answered}`;
+  $("bar").style.width=`${((index+1)/active.length)*100}%`;
+
+  const s=statFor(item.id);
+  const bankText=s.inBank ? ` • Incorrect Bank streak ${s.streak}/${MASTER_STREAK}` : "";
+  const baseForCoverage=lastSettings ? flattenPool(lastSettings.day,lastSettings.order,lastSettings.source) : [];
+  const cForCoverage=lastSettings ? normalizeCoverage(lastSettings,baseForCoverage,false) : {cycle:1,seen:{}};
+  const seenForCoverage=baseForCoverage.filter(q=>cForCoverage.seen[q.id]).length;
+  const coverageText=baseForCoverage.length ? ` • Coverage ${seenForCoverage}/${baseForCoverage.length}` : "";
+  $("meta").textContent=`${item.day} • ${item.order==="Instructor"?"Instructor self-assessment":item.order+" order"} • ${item.quiz}${bankText}${coverageText} • ${sourceLabel(item)}`;
+$("qtext").textContent=item.q;
+  $("questionMedia").innerHTML=questionMedia(item);
+
+  $("prev").disabled=index===0;
+  $("next").textContent=index===active.length-1 ? "Finish quiz" : "Next question";
+  $("next").disabled=!item.answered;
+  $("removeBadQuestion").disabled=false;
+
+  const holder=$("answers");
+  holder.innerHTML="";
+  if(item.o.length===1 && !item.answered){
+    const form=document.createElement("form");
+    const label=document.createElement("label");label.textContent="Your answer";
+    const input=document.createElement("input");input.type="text";input.required=true;input.autocomplete="off";label.appendChild(input);
+    const submit=document.createElement("button");submit.type="submit";submit.textContent="Check answer";
+    form.appendChild(label);form.appendChild(submit);holder.appendChild(form);
+    form.onsubmit=e=>{e.preventDefault();if(!input.value.trim())return;item.typedAnswer=input.value.trim();answer(item.typedAnswer.toLowerCase()===item.o[0].trim().toLowerCase()?item.answer:-1,submit);};
+  }else item.choices.forEach((choice,i)=>{
+    const b=document.createElement("button");
+    b.type="button";
+    b.className="answer";
+    b.textContent=`${String.fromCharCode(65+i)}. ${choice.txt}`;
+
+    if(item.answered){
+      b.disabled=true;
+      if(i===item.answer) b.classList.add("correct");
+      if(i===item.selected && !item.wasCorrect) b.classList.add("wrong");
+    }else{
+      b.addEventListener("click",()=>answer(i,b));
+    }
+    holder.appendChild(b);
+  });
+
+  if(item.answered){
+    const correctAnswer=escapeHtml(item.choices[item.answer].txt);
+    const slide=slideNumber(item.day,item.page);
+    let masteryMsg="";
+    const currentStat=statFor(item.id);
+
+    if(currentStat.mastered){
+      masteryMsg=`<div class="mastery done">Mastered: ${MASTER_STREAK}/${MASTER_STREAK} consecutive correct. Removed from Incorrect Bank.</div>`;
+    }else if(currentStat.inBank){
+      masteryMsg=`<div class="mastery need">Incorrect Bank: correct streak ${currentStat.streak}/${MASTER_STREAK}. This question will be prioritized in future adaptive quizzes.</div>`;
+    }
+
+    $("feedback").className=`feedback ${item.wasCorrect ? "good" : "bad"}`;
+    $("feedback").innerHTML=
+      `<strong>${item.wasCorrect ? "Correct." : "Incorrect."}</strong>` +
+      (item.wasCorrect ? "" : `<br>Correct answer: ${correctAnswer}`) +
+      `<br><strong>Source:</strong> ${escapeHtml(sourceLabel(item))}<div class="actions">${sourceButton(item)}</div>` +
+      masteryMsg + instructorNote(item);
+  }else{
+    $("feedback").className="feedback hide";
+    $("feedback").textContent="";
+  }
+}
+
+function answer(choiceIndex,button){
+  const item=active[index];
+  if(item.answered) return;
+
+  locked=true;
+  item.answered=true;
+  $("questionMedia").innerHTML=questionMedia(item);
+  item.selected=choiceIndex;
+  answered++;
+
+  const s=statFor(item.id);
+  const buttons=[...$("answers").querySelectorAll("button")];
+  buttons.forEach((b,i)=>{
+    b.disabled=true;
+    if(i===item.answer) b.classList.add("correct");
+  });
+
+  const ok=choiceIndex===item.answer;
+  item.wasCorrect=ok;
+  s.attempts++;
+
+  if(ok){
+    correct++;
+    s.correct++;
+    s.lastResult="correct";
+    button.classList.add("correct");
+
+    if(s.manualRemoved){
+      s.inBank=false;
+      s.streak=0;
+      s.mastered=false;
+    }else if(s.everWrong && !s.mastered){
+      s.streak++;
+      if(s.streak>=MASTER_STREAK){
+        s.streak=MASTER_STREAK;
+        s.inBank=false;
+        s.mastered=true;
+      }else{
+        s.inBank=true;
+      }
+    }else if(s.mastered){
+      s.streak=MASTER_STREAK;
+    }
+
+    $("feedback").className="feedback good";
+  }else{
+    s.wrong++;
+    s.everWrong=true;
+    s.lastResult="wrong";
+    s.streak=0;
+    s.inBank=true;
+    s.mastered=false;
+    s.manualRemoved=false;
+
+    button.classList.add("wrong");
+    if(!missedThisQuiz.some(q=>q.id===item.id)) missedThisQuiz.push(item);
+    $("feedback").className="feedback bad";
+  }
+
+  saveProgress();
+  updateLifetimeUI();
+
+  const correctAnswer=escapeHtml(item.choices[item.answer].txt);
+  const slide=slideNumber(item.day,item.page);
+  let masteryMsg="";
+  if(s.mastered){
+    masteryMsg=`<div class="mastery done">Mastered: ${MASTER_STREAK}/${MASTER_STREAK} consecutive correct. Removed from Incorrect Bank.</div>`;
+  }else if(s.inBank){
+    masteryMsg=`<div class="mastery need">Incorrect Bank: correct streak ${s.streak}/${MASTER_STREAK}. This question will be prioritized in future adaptive quizzes.</div>`;
+  }
+
+  $("feedback").innerHTML=
+    `<strong>${ok ? "Correct." : "Incorrect."}</strong>` +
+    (ok ? "" : `<br>Correct answer: ${correctAnswer}`) +
+    `<br><strong>Source:</strong> ${escapeHtml(sourceLabel(item))}<div class="actions">${sourceButton(item)}</div>` +
+    masteryMsg + instructorNote(item);
+
+  $("scoreline").textContent=`Score: ${correct} / ${answered}`;
+  $("next").disabled=false;
+  $("questionMedia").innerHTML=questionMedia(item);
+}
+function removeCurrentBadQuestion(){
+  const item=active[index];
+  if(!item) return;
+
+  const wasAnswered=!!item.answered;
+  const wasCorrect=!!item.wasCorrect;
+
+  // If it was already answered, remove its contribution from THIS quiz.
+  if(wasAnswered){
+    answered=Math.max(0,answered-1);
+    if(wasCorrect) correct=Math.max(0,correct-1);
+  }
+
+  // A "bad question" is removed from scoring/history as well as future rotation.
+  // If restored later, it comes back as a clean question.
+  progress[item.id]={
+    ...defaultStat(),
+    excluded:true
+  };
+
+  // Remove it from any current-quiz missed list and from the active quiz.
+  missedThisQuiz=missedThisQuiz.filter(q=>q.id!==item.id);
+  active.splice(index,1);
+
+  // Remove stale coverage entry for this question in the current filtered cycle.
+  // It no longer counts toward the eligible denominator because flattenPool excludes it.
+  if(lastSettings){
+    const key=coverageKey(lastSettings);
+    if(coverage[key] && coverage[key].seen){
+      delete coverage[key].seen[item.id];
+    }
+  }
+
+  saveProgress();
+  updateLifetimeUI();
+  updateCoverageStatus();
+
+  alert(
+    wasAnswered
+      ? "Question removed. Its answer was also removed from this quiz score. You can restore it later under View Removed Questions."
+      : "Question removed before answering. It will not count in this quiz. You can restore it later under View Removed Questions."
+  );
+
+  if(!active.length){
+    finish();
+    return;
+  }
+
+  // Stay at the same numeric position so the next question slides into place.
+  // If the removed item was last, move back to the new last item.
+  if(index>=active.length) index=active.length-1;
+
+  render();
+  saveProgress();
+}
+
+function finish(){
+  quizInProgress=false;
+  savedSession=null;
+  $("quiz").classList.add("hide"); $("results").classList.remove("hide");
+  const pct=active.length ? Math.round((correct/active.length)*100) : 0;
+  $("pct").textContent=pct+"%";
+  $("correctCount").textContent=correct;
+  $("missedCount").textContent=missedThisQuiz.length;
+  $("bankAfter").textContent=Object.values(progress).filter(s=>s.inBank).length;
+  $("retry").disabled=!missedThisQuiz.length;
+
+  const r=$("missedReview"); r.innerHTML="";
+  if(missedThisQuiz.length){
+    const h=document.createElement("h3"); h.textContent="Missed-question review"; r.appendChild(h);
+    missedThisQuiz.forEach((item,i)=>{
+      const a=document.createElement("article");
+      a.innerHTML=`<strong>${i+1}. ${escapeHtml(item.q)}</strong><br>
+        <span class="small">${escapeHtml(sourceLabel(item))}</span><br>
+        Correct: ${escapeHtml(item.choices[item.answer].txt)}<br>${sourceButton(item)}<br>
+        <span class="small">Bank streak: ${statFor(item.id).streak}/${MASTER_STREAK}</span>`;
+      r.appendChild(a);
+    });
+  }
+  saveProgress();
+  showResumeSessionPanel();
+}
+
+function startBank(){
+  const settings={
+    day:$("day").value, order:$("order").value, source:$("source").value,
+    size:Number($("size").value), mode:"Incorrect"
+  };
+  lastSettings=settings;
+  const pool=buildQuiz(settings);
+  if(!pool.length){ alert("Your Incorrect Bank is empty for those filters."); return; }
+  startQuiz(pool);
+}
+
+function progressFile(){
+  const payload=makeProgressPayload(true);
+  return new File(
+    [JSON.stringify(payload,null,2)],
+    "IPAP_Progress_"+new Date().toISOString().replace(/[:.]/g,"-")+".json",
+    {type:"application/json"}
+  );
+}
+
+function exportProgress(){
+  saveProgress();
+  const file=progressFile();
+  const url=URL.createObjectURL(file);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download=file.name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  $("backupStatus").textContent="Backup download requested. Keep the JSON file to load your progress in another chat or device.";
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+function importProgressFile(file){
+  const reader=new FileReader();
+  reader.onload=async ()=>{
+    try{
+      const parsed=JSON.parse(reader.result);
+      if(await applyImportedPayload(parsed,"progress file")){
+        alert(savedSession
+          ? "Progress imported. Use Resume saved quiz to continue exactly where you left off."
+          : "Progress imported.");
+      }
+    }catch(e){
+      alert(e && e.message ? e.message : "Could not import that progress file.");
+    }
+  };
+  reader.readAsText(file);
+}
+
+$("start").addEventListener("click",()=>startQuiz());
+$("studyBank").addEventListener("click",startBank);
+$("prev").addEventListener("click",()=>{
+  if(index>0){
+    index--;
+    render();
+    saveProgress();
+  }
+});
+$("next").addEventListener("click",()=>{
+  if(!active[index] || !active[index].answered) return;
+  if(index>=active.length-1) finish();
+  else{
+    index++;
+    render();
+    saveProgress();
+  }
+});
+$("removeBadQuestion").addEventListener("click",removeCurrentBadQuestion);
+$("quit").addEventListener("click",finish);
+$("again").addEventListener("click",()=>{ $("mode").value="Adaptive"; startQuiz(); });
+$("retry").addEventListener("click",()=>{ if(missedThisQuiz.length) startQuiz(missedThisQuiz.map(x=>ALL.find(q=>q.id===x.id))); });
+$("resultsBank").addEventListener("click",()=>{ $("results").classList.add("hide"); $("setup").classList.remove("hide"); startBank(); });
+$("home").addEventListener("click",()=>{ $("results").classList.add("hide"); $("setup").classList.remove("hide"); updateLifetimeUI(); });
+
+$("refreshRecommendations").addEventListener("click",renderReviewRecommendations);
+
+$("removedList").addEventListener("click",e=>{
+  const btn=e.target.closest("[data-restore-question]");
+  if(!btn) return;
+  const id=btn.getAttribute("data-restore-question");
+  progress[id]=defaultStat();
+  saveProgress();
+  updateLifetimeUI();
+  updateCoverageStatus();
+});
+
+$("bankList").addEventListener("click",e=>{
+  const toggle=e.target.closest("[data-toggle-answer]");
+  if(toggle){
+    const id=toggle.getAttribute("data-toggle-answer");
+    const panel=document.getElementById(`bank-answer-${id}`);
+    if(panel) panel.classList.toggle("hide");
+    return;
+  }
+
+  const btn=e.target.closest("[data-remove-bank]");
+  if(!btn) return;
+  const id=btn.getAttribute("data-remove-bank");
+  const q=ALL.find(x=>x.id===id);
+  if(!q) return;
+  const s=statFor(id);
+  s.inBank=false;
+  s.streak=0;
+  s.mastered=false;
+  s.manualRemoved=true;
+  saveProgress();
+  updateLifetimeUI();
+});
+
+
+
+$("exportProgress").addEventListener("click",exportProgress);
+
+
+$("resumeSession").addEventListener("click",restoreSavedSession);
+$("discardSession").addEventListener("click",discardSavedSession);
+$("importProgress").addEventListener("change",e=>{ const f=e.target.files && e.target.files[0]; if(f) importProgressFile(f); e.target.value=""; });
+$("resetProgress").addEventListener("click",async ()=>{
+  if(!await askConfirmation("Reset progress for ALL sections? This clears answer history, Incorrect Bank, mastery, removed-question flags, coverage, and the unfinished quiz. Your question edits and custom questions remain. Saved backup files are unchanged.")) return;
+  progress={}; coverage={}; savedSession=null; quizInProgress=false; active=[];
+  index=0; correct=0; answered=0; missedThisQuiz=[]; locked=false; lastSettings=null;
+  $("quiz").classList.add("hide"); $("results").classList.add("hide"); $("setup").classList.remove("hide");
+  saveProgress(); updateLifetimeUI(); updateCoverageStatus(); showResumeSessionPanel(); renderWholeBank();
+  $("backupStatus").textContent="Progress reset for all sections. Question edits and custom questions retained.";
+});
+["day","order","source","mode","size"].forEach(id=>$(id).addEventListener("change",()=>{updateLifetimeUI();updateCoverageStatus();saveProgress();}));
+$("loadButton").onclick=()=>$("importProgress").click();
+$("wholeBank").addEventListener("toggle",()=>{if($("wholeBank").open)renderWholeBank();});
+$("bankSearch").oninput=renderWholeBank;
+$("bankDay").onchange=renderWholeBank;
+$("wholeBankList").onclick=e=>{const b=e.target.closest("[data-edit]");if(b)openEditor(b.dataset.edit);};
+$("editCurrent").onclick=()=>{if(active[index])openEditor(active[index].id);};
+$("cancelEdit").onclick=()=>$("editDialog").close();
+let editingId=null;
+const ORIGINALS=allQuestionObjects();
+function validateEdits(edits,questions=ALL){
+  if(!edits || typeof edits!=="object" || Array.isArray(edits))throw new Error("Invalid question edits.");
+  const clean={};
+  for(const [id,e] of Object.entries(edits)){
+    if(!questions.some(q=>q.id===id) || !e || typeof e.q!=="string" || !e.q.trim() || !Array.isArray(e.o) || e.o.length!==questions.find(q=>q.id===id).o.length || e.o.some(t=>typeof t!=="string" || !t.trim()) || !Number.isInteger(e.a) || e.a<0 || e.a>=e.o.length)throw new Error("Invalid edited question in backup.");
+    clean[id]={q:e.q,o:[...e.o],a:e.a};
+  }
+  return clean;
+}
+function applyEdits(){
+  ALL.forEach((q,i)=>{const e=questionEdits[q.id]||ORIGINALS.find(x=>x.id===q.id)||customQuestions.find(x=>x.id===q.id)||q; q.q=e.q;q.o=[...e.o];q.a=e.a;});
+  if($("wholeBank").open)renderWholeBank();
+}
+function applySettings(settings){
+  if(!settings)return;
+  ["day","order","source","mode","size"].forEach(id=>{if([...$(id).options].some(o=>o.value===settings[id]))$(id).value=settings[id];});
+}
+function askConfirmation(message){
+  return new Promise(resolve=>{
+    const d=$("confirmDialog");$("confirmMessage").textContent=message;
+    const done=value=>{d.close();resolve(value);};
+    $("confirmYes").onclick=()=>done(true);$("confirmNo").onclick=()=>done(false);
+    d.oncancel=e=>{e.preventDefault();done(false);};d.showModal();
+  });
+}
+function originalQuestionMedia(q){
+  const original=ALL.find(x=>x.id===q.id)||q;
+  if(original.imageKey && QUESTION_IMAGES[original.imageKey]){
+    return `<img src="${QUESTION_IMAGES[original.imageKey]}" alt="Slide-derived study image" style="display:block;max-width:100%;max-height:520px;object-fit:contain;margin:12px auto;background:white;border:1px solid var(--border);border-radius:8px">`;
+  }
+  return "";
+}
+function renderWholeBank(){
+  const term=$("bankSearch").value.toLowerCase(),day=$("bankDay").value;
+  const rows=ALL.filter(q=>(day==="All"||q.day===day)&&[q.q,...q.o].join(" ").toLowerCase().includes(term));
+  $("wholeBankCount").textContent=`${rows.length} of ${ALL.length} questions`;
+  $("wholeBankList").innerHTML=rows.map(q=>`<article class="bank-item"><strong>${escapeHtml(q.q)}</strong><p class="small">${q.day} · ${q.quiz} · ${q.order} order · ${escapeHtml(sourceLabel(q))}${questionEdits[q.id]?" · Edited":""}${statFor(q.id).excluded?" · Removed from quizzes":""}</p>${instructorNote(q)}${bankQuestionMedia(q)}<ol type="A">${q.o.map((o,i)=>`<li>${escapeHtml(o)}${i===q.a?" <strong>— Correct answer</strong>":""}</li>`).join("")}</ol><button type="button" class="secondary" data-edit="${escapeHtml(q.id)}">Edit question / answers</button> ${sourceButton(q)}</article>`).join("");
+}
+function openEditor(id){
+  const q=ALL.find(q=>q.id===id);if(!q)return;editingId=id;
+  $("editText").value=q.q;$("editCorrect").innerHTML=q.o.map((o,i)=>`<option value="${i}">${q.o.length===1?"Accepted answer":String.fromCharCode(65+i)}</option>`).join("");$("editCorrect").value=q.a;
+  $("editChoices").innerHTML=q.o.map((o,i)=>`<label>Answer ${String.fromCharCode(65+i)}<input id="editOption${i}" required value="${escapeHtml(o)}"></label>`).join("");
+  $("editDialog").showModal();
+}
+$("editForm").onsubmit=e=>{
+  e.preventDefault();
+  const edit={q:$("editText").value.trim(),o:ALL.find(q=>q.id===editingId).o.map((_,i)=>$("editOption"+i).value.trim()),a:Number($("editCorrect").value)};
+  if(!edit.q || edit.o.some(o=>!o)){alert("Fill in the question and all answers.");return;}
+  questionEdits[editingId]=edit;applyEdits();
+  const q=ALL.find(q=>q.id===editingId);
+  active=active.map(item=>item.id===editingId&&!item.answered?prepareQuestion(q):item);
+  if(savedSession) savedSession.active=savedSession.active.map(item=>item.id===editingId&&!item.answered?prepareQuestion(q):item);
+  $("editDialog").close();updateLifetimeUI();
+  if(quizInProgress)render();saveProgress();renderWholeBank();
+};
+
+$("day").addEventListener("change",()=>{ $("source").value="Random";updateCoverageStatus();saveProgress(); });
+function validateCustomQuestions(items){
+  if(!Array.isArray(items))throw new Error('Invalid custom questions.');
+  const ids=new Set();
+  return items.map(item=>{
+    if(!item || typeof item.id!=='string' || !/^custom-[a-zA-Z0-9-]+$/.test(item.id) || ids.has(item.id))throw new Error('Invalid custom question ID.');
+    ids.add(item.id);
+    if(!Object.prototype.hasOwnProperty.call(BANK,item.day) || !['First','Second'].includes(item.order) || typeof item.q!=='string' || !item.q.trim() || !Array.isArray(item.o) || item.o.length!==5 || item.o.some(t=>typeof t!=='string'||!t.trim()) || new Set(item.o.map(t=>t.trim().toLowerCase())).size!==5 || !Number.isInteger(item.a) || item.a<0 || item.a>4)throw new Error('Each custom question needs a section, five distinct choices, and one correct answer.');
+    const refs=item.masterSlides||[];
+    if(!Array.isArray(refs) || refs.length>20 || refs.some(n=>!Number.isInteger(n)||n<1||n>(item.day==='Cell Signaling'?67:92)))throw new Error('Invalid slide number.');
+    return {id:item.id,day:item.day,quiz:'Custom',order:item.order,q:item.q.trim(),o:item.o.map(t=>t.trim()),a:item.a,page:0,slides:[],masterSlides:[...new Set(refs)]};
+  });
+}
+function rebuildQuestions(){
+  ALL.splice(0,ALL.length,...allQuestionObjects(),...customQuestions.map(q=>({...q,o:[...q.o],masterSlides:[...q.masterSlides]})));
+  applyEdits();
+}
+function sourceSlidesFor(question){
+  const q=ALL.find(x=>x.id===question.id)||question;
+  const deck=q.sourceDeck||q.day;
+  if(q.quiz==='Custom')return (q.masterSlides||[]).map(n=>({number:n,deck}));
+  return (q.slides||[q.page]).map(n=>({number:n,deck}));
+}
+function sourceButton(q){ return ''; }
+$('addOwnQuestion').onclick=()=>{
+  $('customQuestionForm').reset();
+  $('customSection').innerHTML=Object.keys(BANK).map(day=>`<option>${escapeHtml(day)}</option>`).join('');
+  if(Object.prototype.hasOwnProperty.call(BANK,$('day').value))$('customSection').value=$('day').value;
+  $('customError').textContent='';$('customQuestionDialog').showModal();
+};
+$('cancelCustomQuestion').onclick=()=>$('customQuestionDialog').close();
+$('customQuestionForm').onsubmit=e=>{
+  e.preventDefault();
+  try{
+    const text=$('customSlideNumbers').value.trim();
+    if(text && !/^\d+(?:\s*,\s*\d+)*$/.test(text))throw new Error('Enter slide numbers separated by commas, for example 12, 13.');
+    const item={id:'custom-'+(globalThis.crypto?.randomUUID?globalThis.crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)),day:$('customSection').value,order:$('customOrder').value,q:$('customQuestionText').value,o:[0,1,2,3,4].map(i=>$('customAnswer'+i).value),a:Number($('customCorrect').value),masterSlides:text?text.split(',').map(n=>Number(n.trim())):[]};
+    const validated=validateCustomQuestions([...customQuestions,item]);
+    customQuestions=validated;rebuildQuestions();saveProgress();updateLifetimeUI();updateCoverageStatus();renderWholeBank();
+    $('customQuestionDialog').close();
+    $('backupStatus').textContent='Question added. Use Save Progress to include it in your backup.';
+  }catch(error){$('customError').textContent=error.message;}
+};
+
+const MASTER_SLIDES = {};
+const MASTER_FIGURES = {};
+const EXAM_PICTURES = {};
+const PICTURE_QUESTIONS = {};
+const INSTRUCTOR_SOURCE = {"biochem2-c-0198": "Instructor-provided question. Answer verified against the paired answer slide.", "biochem2-c-0199": "Instructor-provided question. Answer verified against the paired answer slide.", "biochem2-c-0200": "Instructor-provided question. Answer verified against the paired answer slide.", "biochem2-c-0201": "Instructor-provided question. Answer verified against the paired answer slide.", "biochem2-c-0202": "Instructor-provided question. Answer verified against the paired answer slide.", "biochem2-c-0203": "Instructor-provided question. Answer verified against the paired answer slide.", "biochem2-c-0204": "Instructor-provided question. Answer verified against the paired answer slide.", "biochem2-s-0205": "Instructor-provided question. Answer verified against the paired answer slide.", "biochem2-s-0206": "Instructor-provided question. Answer verified against the paired answer slide.", "biochem2-s-0207": "Instructor-provided question. Answer verified against the paired answer slide.", "biochem2-s-0208": "Instructor-provided question. Answer verified against the paired answer slide.", "biochem2-c-0209": "Instructor-provided question (learning check adapted to multiple choice).", "biochem2-c-0210": "Instructor-provided question (learning check adapted to multiple choice).", "biochem2-c-0211": "Instructor-provided question (learning check adapted to multiple choice).", "biochem2-c-0212": "Instructor-provided question (learning check adapted to multiple choice).", "biochem2-c-0213": "Instructor-provided question (learning check adapted to multiple choice).", "biochem2-c-0214": "Instructor-provided question (learning check adapted to multiple choice).", "biochem2-c-0215": "Instructor-provided question (learning check adapted to multiple choice).", "biochem2-c-0216": "Instructor-provided question (learning check adapted to multiple choice)."};
+function questionMedia(q){return '';}
+function bankQuestionMedia(q){return '';}
+function instructorNote(q){return INSTRUCTOR_SOURCE[q.id]?'<p class="small">'+escapeHtml(INSTRUCTOR_SOURCE[q.id])+'</p>':'';}
+loadProgress();
+if(!Object.prototype.hasOwnProperty.call(BANK,$('day').value))$('day').value='Carb Metabolism';
+updateStorageStatus();
+updateLifetimeUI();
+updateCoverageStatus();
+showResumeSessionPanel();
+</script>
+</body>
+</html>
